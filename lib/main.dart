@@ -1,4 +1,8 @@
+import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg_icons/flutter_svg_icons.dart';
+
+import 'help/showeearch_city.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,23 +34,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-List<String> list = const ['Москва', 'Tomsk', 'Novosibirsk'];
-
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
   String dropdownValue = list.first;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -66,50 +55,69 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       const Icon(
                         Icons.place_outlined,
-                        color: Color(0xFFFF6E4E),
+                        color: ColorsConst.red,
                       ),
-                      SizedBox(width: 8),
-                      DropdownButton<String>(
-                        underline: SizedBox.shrink(),
-                        value: dropdownValue,
+                      const SizedBox(width: 8),
+                      Text(dropdownValue, style: const TextStyle(fontSize: 19)),
+                      IconButton(
                         icon: const Icon(Icons.keyboard_arrow_down),
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.deepPurple),
-                        onChanged: (String? value) {
-                          setState(() {
-                            dropdownValue = value!;
-                          });
+                        onPressed: () async {
+                          final city = await showSearch(
+                              context: context, delegate: SearchCity());
+
+                          setState(() => dropdownValue = city);
                         },
-                        items: list.map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: ConstrainedBox(
-                                constraints: BoxConstraints(maxWidth: 150), child: Text(value)),
-                          );
-                        }).toList(),
-                      ),
+                      )
                     ],
                   ),
                   SizedBox(
-                    width: 18,
-                    height: 18,
+                    width: 11,
+                    height: 13,
                     child: Image.asset('assets/filter.png'),
                   ),
                 ],
               ),
             ),
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 10),
+              child: Row(
+                children: const [
+                   Text(
+                    'Select category',
+                    style: TextStyle(fontSize: 25),
+                  ),
+                   Spacer(),
+                   Text(
+                    'view all',
+                    style: TextStyle(fontSize: 19, color: ColorsConst.red),
+                  )
+                ],
+              ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const[
+                 SvgIcon(
+                    size: 30,
+                    icon: SvgIconData('assets/phone.svg'),
+                    color: Colors.grey),
+                 SvgIcon(
+                    size: 30,
+                    icon: SvgIconData('assets/computer.svg'),
+                    color: Colors.grey),
+                 SvgIcon(
+                    size: 30,
+                    icon: SvgIconData('assets/health.svg'),
+                    color: Colors.grey),
+                 SvgIcon(
+                    size: 30,
+                    icon: SvgIconData('assets/books.svg'),
+                    color: Colors.grey),
+              ],
+            )
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
-          tooltip: 'Increment',
-          child: const Icon(Icons.add),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
+        // This trailing comma makes auto-formatting nicer for build methods.
       ),
     );
   }
