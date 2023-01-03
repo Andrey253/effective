@@ -5,6 +5,7 @@ import 'package:effective/model/category.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/widgets/best_seller.dart';
+import 'package:effective/widgets/botom_sheet.dart';
 import 'package:effective/widgets/categories.dart';
 import 'package:effective/widgets/filter.dart';
 import 'package:effective/widgets/line/best_saller.dart';
@@ -76,9 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            Container(
-              height: 72,
-            )
+            const BottonSheet()
           ],
         ),
         // This trailing comma makes auto-formatting nicer for build methods.
