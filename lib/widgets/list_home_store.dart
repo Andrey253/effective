@@ -47,18 +47,19 @@ class ListHomeStore extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CircleAvatar(
-                          backgroundColor: ColorsConst.red,
-                          radius: radiusNew,
-                          child: Text(
-                            'New',
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                                fontFamily: 'SFPRODISPLAYREGULAR',
-                                fontSize: width * 0.022),
-                          ),
-                        ),
+                        if (store.homeStore[index].isNew == true)
+                          CircleAvatar(
+                            backgroundColor: ColorsConst.red,
+                            radius: radiusNew,
+                            child: Text(
+                              'New',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  fontFamily: 'SFPRODISPLAYREGULAR',
+                                  fontSize: width * 0.022),
+                            ),
+                          )else Container(height: radiusNew*2,),
                         Text(
                           store.homeStore[index].title,
                           style: TextStyle(
@@ -102,7 +103,7 @@ class ListHomeStore extends StatelessWidget {
                 width: width - horizontal * 2 - f,
                 height: 200,
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: BoxDecoration(color: Colors.black,
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(circular),
                         bottomRight: Radius.circular(circular)),

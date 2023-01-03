@@ -4,12 +4,14 @@ import 'package:effective/model/a.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/source/consts.dart';
+import 'package:effective/widgets/best_seller.dart';
 import 'package:effective/widgets/categories.dart';
 import 'package:effective/widgets/filter.dart';
-import 'package:effective/widgets/hot_sales.dart';
+import 'package:effective/widgets/line/best_saller.dart';
+import 'package:effective/widgets/line/hot_sales.dart';
 import 'package:effective/widgets/list_home_store.dart';
 import 'package:effective/widgets/search_field.dart';
-import 'package:effective/widgets/select_category.dart';
+import 'package:effective/widgets/line/select_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
@@ -59,14 +61,24 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         backgroundColor: ColorsConst.white900,
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Filter(dropdownValue: dropdownValue),
-            const SelectCategoryWidget(),
-            const CategoryesWidget(),
-            const SearchField(),
-            const HotSalesWidget(),
-            ListHomeStore(store: store)
+          children: [
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  Filter(dropdownValue: dropdownValue),
+                  const SelectCategoryLine(),
+                  const CategoryesWidget(),
+                  const SearchField(),
+                  const HotSalesLine(),
+                  ListHomeStore(store: store),
+                  const BestSellerLine(),
+                  BestSellerWidget(store: store),
+                ],
+              ),
+            ),
+            Container(
+              height: 72,
+            )
           ],
         ),
         // This trailing comma makes auto-formatting nicer for build methods.
@@ -82,4 +94,3 @@ class _MyHomePageState extends State<MyHomePage> {
     final f = Store.fromJson(e.data);
   }
 }
-
