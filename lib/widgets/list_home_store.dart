@@ -14,10 +14,12 @@ class ListHomeStore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final f = width * 0.35;
+    final f = width * 0.31;
+    final radiusNew = width * 0.032;
+    final circular = width * 0.024;
     // print('teg $width');
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: horizontal, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: horizontal, vertical: 7),
       child: Container(
         height: 200,
         child: PageView.builder(
@@ -33,8 +35,64 @@ class ListHomeStore extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.black,
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(30),
-                        bottomLeft: Radius.circular(30)),
+                        topLeft: Radius.circular(circular),
+                        bottomLeft: Radius.circular(circular)),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.only(
+                        left: width * 0.03,
+                        bottom: width * 0.03,
+                        top: width * 0.03),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: ColorsConst.red,
+                          radius: radiusNew,
+                          child: Text(
+                            'New',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                fontFamily: 'SFPRODISPLAYREGULAR',
+                                fontSize: width * 0.022),
+                          ),
+                        ),
+                        Text(
+                          store.homeStore[index].title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: Colors.white,
+                              fontFamily: 'SFPRODISPLAYREGULAR',
+                              fontSize: width * 0.055),
+                        ),
+                        Text(
+                          store.homeStore[index].subtitle,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                              fontFamily: 'SFPRODISPLAYREGULAR',
+                              fontSize: width * 0.024),
+                        ),
+                        ElevatedButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Buy now!',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.black,
+                                  fontFamily: 'SFPRODISPLAYREGULAR',
+                                  fontSize: width * 0.024),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              minimumSize:
+                                  Size(width * 0.23, width * 0.055), // Set this
+                              padding: EdgeInsets.zero,
+                            ))
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -44,12 +102,12 @@ class ListHomeStore extends StatelessWidget {
                 width: width - horizontal * 2 - f,
                 height: 200,
                 child: Container(
-                  // alignment: Alignment.centerRight,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(30),
-                        bottomRight: Radius.circular(30)),
+                        topRight: Radius.circular(circular),
+                        bottomRight: Radius.circular(circular)),
                     image: DecorationImage(
+                      alignment: Alignment.centerLeft,
                       fit: BoxFit.fitHeight,
                       image: NetworkImage(store.homeStore[index].picture),
                     ),

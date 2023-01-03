@@ -39,6 +39,9 @@ flutter:
   - family: Mark-Pro
     fonts:
       - asset: fonts/Mark-Pro.ttf
+  - family: SFPRODISPLAYREGULAR
+    fonts:
+      - asset: fonts/SFPRODISPLAYREGULAR.OTF
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
