@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:effective/block/block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/source/consts.dart';
+import 'package:effective/widgets/filter/buttons_app.dart';
 import 'package:effective/widgets/filter/name_params_filtert.dart';
 import 'package:effective/widgets/filter/select_params_filter_widget.dart';
 import 'package:flutter/material.dart';
@@ -39,17 +40,13 @@ class FilterWidget extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        ElevatedButton(
+                        ButtonsApp(
+                            block: block,
+                            width: width * 0.09,
+                            height: width * 0.09,
+                            circular: 10,
+                            backgroundColor: ColorsConst.textColor,
                             onPressed: block.cancelFilter,
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              backgroundColor: ColorsConst.textColor,
-                              minimumSize:
-                                  Size(width * 0.09, width * 0.09), // Set this
-                              padding: EdgeInsets.zero,
-                            ),
                             child:
                                 const Icon(Icons.close, color: Colors.white)),
                         const Text(
@@ -57,17 +54,13 @@ class FilterWidget extends StatelessWidget {
                           style: TextStyle(
                               fontWeight: FontWeight.w600, fontSize: 18),
                         ),
-                        ElevatedButton(
+                        ButtonsApp(
+                            block: block,
+                            width: width * 0.21,
+                            height: width * 0.09,
+                            circular: 10,
+                            backgroundColor: ColorsConst.red,
                             onPressed: block.doneFilter,
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              backgroundColor: ColorsConst.red,
-                              minimumSize:
-                                  Size(width * 0.21, width * 0.09), // Set this
-                              padding: EdgeInsets.zero,
-                            ),
                             child: const Text(
                               'Done',
                               style: TextStyle(
@@ -103,3 +96,4 @@ class FilterWidget extends StatelessWidget {
             ));
   }
 }
+

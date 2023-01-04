@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
     store = Store.fromJson(a);
     super.initState();
   }
-
+//flutter build apk --split-per-abi
   @override
   Widget build(BuildContext context) {
     return SafeArea(
