@@ -1,8 +1,16 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-List<String> list = const ['Moskow', 'Tomsk', 'Novosibirsk'];
+Future<List<String>> listCityStart() async {
+  await Future.delayed(const Duration(milliseconds: 3000));
+  return ['Moskow', 'Tomsk', 'Novosibirsk'];
+}
 
 class SearchCity extends SearchDelegate {
+  List<String> listCity;
+  SearchCity({
+    required this.listCity,
+  });
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -33,7 +41,7 @@ class SearchCity extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     return ListView(children: [
-      ...list.where((element) => element.contains(query)).map(
+      ...listCity.where((element) => element.contains(query)).map(
           (e) => TextButton(onPressed: () => close(context, e), child: Text(e)))
     ]);
   }

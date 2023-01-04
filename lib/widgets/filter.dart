@@ -1,46 +1,75 @@
-import 'package:effective/help/showsearch_city.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:effective/block/block.dart';
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg_icons/flutter_svg_icons.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Filter extends StatelessWidget {
-  const Filter({
-    Key? key,
-    required this.dropdownValue,
-  }) : super(key: key);
-
-  final String dropdownValue;
+class FilterWidget extends StatelessWidget {
+  const FilterWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final circular = 30.0;
+    final width = MediaQuery.of(context).size.width;
+        final block = context.read<AppBloc>();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const SizedBox(width: 18),
-          Row(
-            children: [
-              const Icon(
-                Icons.place_outlined,
-                color: ColorsConst.red,
-              ),
-              const SizedBox(width: 8),
-              Text(dropdownValue, style: const TextStyle(fontSize: 19)),
-              IconButton(
-                icon: const Icon(Icons.keyboard_arrow_down),
-                onPressed: () async {
-                          final city = await showSearch(
-                              context: context, delegate: SearchCity());
-
-                          // setState(() => dropdownValue = city);
-                        },
-              )
-            ],
-          ),
-          const SvgIcon(
-              size: 15, icon: SvgIconData('assets/svg/filter.svg')),
-        ],
+      padding: const EdgeInsets.only(top: 10),
+      child: Container(
+        height: width * 0.9,
+        padding: EdgeInsets.only(left: 44, right: 20, top: 24),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(circular),
+          boxShadow: const [
+            BoxShadow(
+                color: Colors.black12, blurRadius: 10, offset: Offset(0, -10)),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                    onPressed: block.cancelFilter,
+                    child: Icon(
+                      Icons.close,
+                      color: Colors.white,
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      backgroundColor: ColorsConst.textColor,
+                      minimumSize: Size(width * 0.09, width * 0.09), // Set this
+                      padding: EdgeInsets.zero,
+                    )),
+                Text(
+                  'Filter options',
+                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                ),
+                ElevatedButton(
+                    onPressed: block.doneFilter,
+                    child: Text(
+                      'Done',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      backgroundColor: ColorsConst.red,
+                      minimumSize: Size(width * 0.21, width * 0.09), // Set this
+                      padding: EdgeInsets.zero,
+                    ))
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

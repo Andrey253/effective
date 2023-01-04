@@ -8,4 +8,4 @@ abstract class ColorsConst {
   static const textColor = Color(0xFF010035);
 }
 
-const horizontal = 27.0;
+

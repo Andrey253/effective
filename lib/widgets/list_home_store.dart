@@ -19,9 +19,9 @@ class ListHomeStore extends StatelessWidget {
     final circular = width * 0.024;
     // print('teg $width');
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: horizontal, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
       child: Container(
-        height: 200,
+        height: 220,
         child: PageView.builder(
           itemBuilder: (context, index) => Stack(
             children: [
@@ -29,7 +29,7 @@ class ListHomeStore extends StatelessWidget {
                 left: 0,
                 top: 0,
                 width: f + 1,
-                height: 200,
+                height: 220,
                 child: Container(
                   width: 120,
                   decoration: BoxDecoration(
@@ -40,7 +40,7 @@ class ListHomeStore extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: EdgeInsets.only(
-                        left: width * 0.03,
+                        left: width * 0.05,
                         bottom: width * 0.03,
                         top: width * 0.03),
                     child: Column(
@@ -100,8 +100,8 @@ class ListHomeStore extends StatelessWidget {
               Positioned(
                 left: f,
                 top: 0,
-                width: width - horizontal * 2 - f,
-                height: 200,
+                width: width - 15 * 2 - f,
+                height: 220,
                 child: Container(
                   decoration: BoxDecoration(color: Colors.black,
                     borderRadius: BorderRadius.only(
