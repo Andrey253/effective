@@ -39,7 +39,7 @@ class FilterLine extends StatelessWidget {
                     ],
                   ),
                   IconButton(
-                    onPressed: () => block.filter(),
+                    onPressed: () => block.filter('open'),
                     icon: const SvgIcon(
                         size: 15, icon: SvgIconData('assets/svg/filter.svg')),
                   ),

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:effective/model/filter_params.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:effective/model/category.dart';
@@ -38,11 +39,13 @@ class SelectCityState extends AppState {
 }
 
 class FilterState extends AppState {
-  const FilterState();
+  const FilterState(this.value);
+  final String value;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [value];
 }
+
 class CancelFilterState extends AppState {
   const CancelFilterState();
 

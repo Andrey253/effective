@@ -1,10 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-Future<List<String>> listCityStart() async {
-  await Future.delayed(const Duration(milliseconds: 3000));
-  return ['Moskow', 'Tomsk', 'Novosibirsk'];
-}
+
 
 class SearchCity extends SearchDelegate {
   List<String> listCity;

@@ -11,44 +11,35 @@ class AppBloc extends Cubit<AppState> {
   }
 
   void init() async {
-    getListCity();
-    getListCategory();
+    setListCity();
+    setListCategory();
+    setFilterParams();
   }
 
   final Repository repository;
 
   void selectCity(BuildContext context) async {
-    final city = await showSearch(
-        context: context, delegate: SearchCity(listCity: repository.listCity));
-    repository.city = city;
+    final city = await repository.selectCity(context);
     emit(SelectCityState(city: city));
   }
 
   void selectCategory(Category category) {
-    repository.listCategory.forEach((element) {
-      element.selected = false;
-    });
-    category.selected = true;
-    print('teg selectCategory');
+    repository.selectCategory(category);
     emit(SelectCategoryState(category));
   }
 
-  void getListCategory() async {
-    repository.listCategory = await listCategoryStart();
+  void setListCategory() async {
+    await repository.setListCategory();
     emit(const SetCategoryState());
   }
 
-  void getListCity() async {
-    if (repository.listCity.isNotEmpty) return;
-    repository.listCity = await listCityStart();
-    if (repository.listCity.isNotEmpty) {
-      repository.city = repository.listCity.first;
-    }
+  void setListCity() async {
+    await repository.setListCity();
     emit(SelectCityState(city: repository.city));
   }
 
-  filter() {
-    emit(const FilterState());
+  filter(String v) {
+    emit(FilterState(v));
   }
 
   void cancelFilter() {
@@ -57,5 +48,33 @@ class AppBloc extends Cubit<AppState> {
 
   void doneFilter() {
     emit(const CancelFilterState());
+  }
+
+  void setFilterParams() async {
+    await repository.setListPrices();
+    await repository.setListBrand();
+    await repository.setListSizes();
+    emit(const StartState());
+  }
+
+  void setBrend(String? value) {
+    repository.setBrend(value);
+    if (value != null) {
+      emit(FilterState(value));
+    }
+  }
+
+  void setPrice(String? value) {
+        repository.setPrice(value);
+    if (value != null) {
+      emit(FilterState(value));
+    }
+  }
+
+  void setSize(String? value) {
+            repository.setSize(value);
+    if (value != null) {
+      emit(FilterState(value));
+    }
   }
 }
