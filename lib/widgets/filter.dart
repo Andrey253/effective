@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:effective/block/block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/source/consts.dart';
+import 'package:effective/widgets/filter/name_params_filtert.dart';
+import 'package:effective/widgets/filter/select_params_filter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -74,66 +76,27 @@ class FilterWidget extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 40),
-                    const Text('Brand',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 18)),
-                    const SizedBox(height: 10),
-                    InputDecorator(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(gapPadding: 0),
-                          contentPadding: EdgeInsets.symmetric(horizontal: 15),
-                        ),
-                        child: DropdownButton<String>(
-                            items: block.repository.filterParams.listBrands
-                                .map((e) => DropdownMenuItem(
-                                      value: e,
-                                      child: Text(e,
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: 18)),
-                                    ))
-                                .toList(),
-                            onChanged: block.setBrend,
-                            value: block.repository.filterParams.brand,
-                            isExpanded: true,
-                            underline: SizedBox.shrink())),
-                    const SizedBox(height: 30),
-                    const Text('Price',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 18)),
-                    const SizedBox(height: 10),
-                    DropdownButton<String>(
-                        items: block.repository.filterParams.listPrices
-                            .map((e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(e,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 18)),
-                                ))
-                            .toList(),
-                        onChanged: block.setPrice,
+                    const NameParamsFilterWidget(name: 'Brand'),
+
+                    SelectParamsFilterWidget(
+                        block: block,
+                        items: block.repository.filterParams.listBrands,
+                        value: block.repository.filterParams.brand,
+                        onChanged: block.setBrend),
+                    // const SizedBox(height: 30),
+                    const NameParamsFilterWidget(name: 'Price'),
+                    SelectParamsFilterWidget(
+                        block: block,
+                        items: block.repository.filterParams.listPrices,
                         value: block.repository.filterParams.price,
-                        isExpanded: true,
-                        underline: SizedBox.shrink()),
-                    const SizedBox(height: 30),
-                    const Text('Size',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600, fontSize: 18)),
-                    DropdownButton<String>(
-                        items: block.repository.filterParams.listSizes
-                            .map((e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(e,
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 18)),
-                                ))
-                            .toList(),
-                        onChanged: block.setSize,
+                        onChanged: block.setPrice),
+
+                    const NameParamsFilterWidget(name: 'Size'),
+                    SelectParamsFilterWidget(
+                        block: block,
+                        items: block.repository.filterParams.listSizes,
                         value: block.repository.filterParams.size,
-                        isExpanded: true,
-                        underline: SizedBox.shrink()),
+                        onChanged: block.setSize),
                   ],
                 ),
               ),
