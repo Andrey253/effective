@@ -12,8 +12,7 @@ class BottonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppBloc, AppState>(
-     
+    return BlocBuilder<AppBloc, HomeState>(
         builder: (context, state) => state is FilterState
             ? const SizedBox.shrink()
             : Container(

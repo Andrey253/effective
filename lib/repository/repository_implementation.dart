@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:effective/help/showsearch_city.dart';
-import 'package:effective/model/a.dart';
+import 'package:effective/model/json_store.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/model/filter_params.dart';
 import 'package:effective/model/store/store.dart';
@@ -53,10 +53,12 @@ class RepositoryImplementation extends Repository {
   Future<void> setListPrices() async {
     await Future.delayed(const Duration(milliseconds: 900));
     final listP = [
-      '\$100 - \$300',
+      '\$0 - \$300',
       '\$300 - \$500',
-      '\$500 - \$800',
-      '\$800 - \$1000',
+      '\$500 - \$1000',
+      '\$1000 - \$3000',
+      '\$3000 - \$6000',
+      '\$6000 - \$10000',
     ];
     filterParams = filterParams.copyWith(listPrices: listP, price: listP.first);
   }

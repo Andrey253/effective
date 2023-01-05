@@ -11,7 +11,7 @@ class BestSellerLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppBloc, AppState>(
+    return BlocBuilder<AppBloc, HomeState>(
         builder: (context, state) => state is FilterState
             ? const SizedBox.shrink()
             : Padding(
@@ -20,8 +20,10 @@ class BestSellerLine extends StatelessWidget {
                   children: const [
                     Text(
                       'Best Seller',
-                      style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w700,
+                          color: ColorsConst.textColor),
                     ),
                     Spacer(),
                     Text(

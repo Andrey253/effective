@@ -1,25 +1,19 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dio/dio.dart';
 import 'package:effective/block/block.dart';
-import 'package:effective/model/a.dart';
-import 'package:effective/model/category.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/repository/repository_implementation.dart';
 import 'package:effective/source/consts.dart';
-import 'package:effective/widgets/best_seller.dart';
-import 'package:effective/widgets/botom_sheet.dart';
-import 'package:effective/widgets/categories.dart';
+import 'package:effective/widgets/home/best_seller.dart';
+import 'package:effective/widgets/home/botom_sheet.dart';
+import 'package:effective/widgets/home/categories.dart';
+import 'package:effective/widgets/home/hot_sales.dart';
+import 'package:effective/widgets/home/search_field.dart';
 import 'package:effective/widgets/line/filter_line.dart';
 import 'package:effective/widgets/line/best_saller.dart';
 import 'package:effective/widgets/line/hot_sales.dart';
-import 'package:effective/widgets/hot_sales.dart';
-import 'package:effective/widgets/search_field.dart';
 import 'package:effective/widgets/line/select_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg_icons/flutter_svg_icons.dart';
-
-import 'help/showsearch_city.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,14 +25,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AppBloc>(
-        create: (_) => AppBloc(RepositoryImplementation())..init(),
+        create: (_) => AppBloc(RepositoryImplementation()),
         child: MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            // backgroundColor: const Color(0xAAF5F5F5),
-            fontFamily: 'Mark-Pro',
-            primarySwatch: Colors.blue,
-          ),
+          title: 'Home',
+          theme: ThemeData(fontFamily: 'Mark-Pro'),
           home: const MyHomePage(),
         ));
   }
@@ -57,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorsConst.white900,
+        backgroundColor: ColorsConst.backGround,
         body: Column(
           children: [
             Expanded(

@@ -1,11 +1,14 @@
+import 'package:effective/block/details_state.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/help/showsearch_city.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/repository/repository.dart';
+import 'package:effective/widgets/details/details.dart';
+import 'package:effective/widgets/details/detais_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AppBloc extends Cubit<AppState> {
+class AppBloc extends Cubit<HomeState> {
   AppBloc(this.repository) : super(const StartState()) {
     init();
   }
@@ -83,5 +86,12 @@ class AppBloc extends Cubit<AppState> {
   void getStore() async {
     await repository.getStore();
     emit(const StartState());
+  }
+
+  void navigateToDetails(BuildContext context, String url,Repository repository) async {
+    await Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) =>  DetailsHome(repository: repository,url: url,),
+    ));
+    // emit(GetingDetails(url: url));
   }
 }

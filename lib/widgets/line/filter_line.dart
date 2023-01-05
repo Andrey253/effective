@@ -14,7 +14,7 @@ class FilterLine extends StatelessWidget {
 
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: BlocBuilder<AppBloc, AppState>(
+        child: BlocBuilder<AppBloc, HomeState>(
             buildWhen: (previous, current) => current is SelectCityState,
             builder: (context, state) {
               return Row(

@@ -12,7 +12,7 @@ class HotSalesLine extends StatelessWidget {
         children: const [
           Text(
             'Hot sales',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700,color: ColorsConst.textColor),
           ),
           Spacer(),
           Text(

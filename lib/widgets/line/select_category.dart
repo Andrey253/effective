@@ -14,7 +14,7 @@ class SelectCategoryLine extends StatelessWidget {
         children: const [
           Text(
             'Select category',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700),
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700,color: ColorsConst.textColor),
           ),
           Spacer(),
           Text(

@@ -12,13 +12,12 @@ class BestSellerWidget extends StatelessWidget {
     Key? key,
   }) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     final circular = 20.0;
     final width = MediaQuery.of(context).size.width;
-        final block = context.read<AppBloc>();
-    return BlocBuilder<AppBloc, AppState>(
+    final block = context.read<AppBloc>();
+    return BlocBuilder<AppBloc, HomeState>(
         builder: (context, state) => state is FilterState
             ? const FilterWidget()
             : Padding(
@@ -37,7 +36,7 @@ class BestSellerWidget extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(circular),
                                   boxShadow: const [
                                     BoxShadow(
-                                        color: ColorsConst.white800,
+                                        color: ColorsConst.padding,
                                         spreadRadius: 15),
                                   ],
                                 ),

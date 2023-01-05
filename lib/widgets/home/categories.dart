@@ -25,7 +25,7 @@ class CategoryesWidget extends StatelessWidget {
       height: (radius + padding) * 2 + heightText,
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: BlocBuilder<AppBloc, AppState>(
+          child: BlocBuilder<AppBloc, HomeState>(
               builder: (context, state) => ListView(
                   scrollDirection: Axis.horizontal,
                   children: block.repository.listCategory
@@ -34,7 +34,7 @@ class CategoryesWidget extends StatelessWidget {
                               GestureDetector(
                                 onTap: () => block.selectCategory(e),
                                 child: CircleAvatar(
-                                  backgroundColor: ColorsConst.white800,
+                                  backgroundColor: ColorsConst.padding,
                                   radius: (padding + radius),
                                   child: CircleAvatar(
                                       backgroundColor: ColorsConst.red,

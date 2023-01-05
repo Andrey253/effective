@@ -4,31 +4,31 @@ import 'package:equatable/equatable.dart';
 
 import 'package:effective/model/category.dart';
 
-abstract class AppState extends Equatable {
-  const AppState();
+abstract class HomeState extends Equatable {
+  const HomeState();
 }
 
-class StartState extends AppState {
+class StartState extends HomeState {
   const StartState();
 
   @override
   List<Object> get props => [];
 }
 
-class SelectCategoryState extends AppState {
+class SelectCategoryState extends HomeState {
   const SelectCategoryState(this.listCategory);
   final List<Category> listCategory;
   @override
   List<Object> get props => [listCategory];
 }
 
-class SetCategoryState extends AppState {
+class SetCategoryState extends HomeState {
   const SetCategoryState();
   @override
   List<Object> get props => [];
 }
 
-class SelectCityState extends AppState {
+class SelectCityState extends HomeState {
   final String city;
   const SelectCityState({
     required this.city,
@@ -38,7 +38,7 @@ class SelectCityState extends AppState {
   List<Object> get props => [city];
 }
 
-class FilterState extends AppState {
+class FilterState extends HomeState {
   const FilterState(this.value);
   final FilterParams value;
 
@@ -46,7 +46,7 @@ class FilterState extends AppState {
   List<Object> get props => [value];
 }
 
-class CancelFilterState extends AppState {
+class CancelFilterState extends HomeState {
   const CancelFilterState();
 
   @override

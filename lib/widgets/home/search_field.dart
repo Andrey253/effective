@@ -14,8 +14,7 @@ class SearchField extends StatelessWidget {
     final padding = radius / 2.5;
     final h = MediaQuery.of(context).size.height * 0.07;
     return Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -23,7 +22,7 @@ class SearchField extends StatelessWidget {
               child: Container(
                 height: h + padding,
                 decoration: BoxDecoration(
-                    color: ColorsConst.white800,
+                    color: ColorsConst.padding,
                     borderRadius:
                         BorderRadius.all(Radius.circular((h + padding) / 2))),
                 child: Container(
@@ -33,8 +32,8 @@ class SearchField extends StatelessWidget {
                       color: Colors.white,
                       border: Border.all(color: Colors.red),
                       borderRadius: BorderRadius.all(Radius.circular(h / 2))),
-                  child:const Padding(
-                    padding:  EdgeInsets.all(8.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: TextField(
                         decoration: InputDecoration(
                             prefixIcon: Icon(
@@ -48,7 +47,7 @@ class SearchField extends StatelessWidget {
               ),
             ),
             CircleAvatar(
-              backgroundColor: ColorsConst.white800,
+              backgroundColor: ColorsConst.padding,
               radius: (h + padding) / 2,
               child: CircleAvatar(
                   backgroundColor: ColorsConst.red,

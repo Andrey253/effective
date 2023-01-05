@@ -18,7 +18,7 @@ class FilterWidget extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final circular = width * 0.08;
     final block = context.read<AppBloc>();
-    return BlocBuilder<AppBloc, AppState>(
+    return BlocBuilder<AppBloc, HomeState>(
         buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => Padding(
               padding: const EdgeInsets.only(top: 10),
