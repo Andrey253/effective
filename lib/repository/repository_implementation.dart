@@ -2,17 +2,15 @@
 import 'package:effective/help/showsearch_city.dart';
 import 'package:effective/model/json_store.dart';
 import 'package:effective/model/category.dart';
-import 'package:effective/model/filter_params.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/repository/repository.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class RepositoryImplementation extends Repository {
   @override
   Future<void> setListCategory() async {
     await Future.delayed(const Duration(milliseconds: 2000));
-    listCategory = [
+    listCategory =const [
       Category(name: 'Phone', asset: 'assets/svg/phone.svg', selected: true),
       Category(
           name: 'Computer', asset: 'assets/svg/computer.svg', selected: false),

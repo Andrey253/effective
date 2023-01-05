@@ -28,3 +28,10 @@ class ErrorDetailsState extends DetailsState {
   @override
   List<Object> get props => [error];
 }
+class UpdateProductState extends DetailsState {
+  const UpdateProductState({required this.property});
+  final String property;
+
+  @override
+  List<Object> get props => [property];
+}

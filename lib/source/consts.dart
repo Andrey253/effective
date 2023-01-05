@@ -6,6 +6,9 @@ abstract class ColorsConst {
   static const backGround = Color(0xFFF5F5F5);
   static const padding = Color.fromARGB(255, 235, 235, 235);
   static const textColor = Color(0xFF010035);
+  static const details = Color(0xFFB7B7B7);
+  static const star = Color(0xFFFFB800);
+  static const capacity = Color(0xFF8D8D8D);
 }
 
 const urlDetails =

@@ -1,5 +1,7 @@
 import 'package:effective/model/category.dart';
+import 'package:effective/model/details_model.dart';
 import 'package:effective/model/filter_params.dart';
+import 'package:effective/model/product_model.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
@@ -15,6 +17,10 @@ abstract class Repository {
       brand: '',
       price: '',
       size: '');
+
+  late Details details;
+  late Product product;
+  List<Product> wallet = [];
 
   Future<void> setListCategory();
   Future<void> setListCity();

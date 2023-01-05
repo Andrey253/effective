@@ -5,15 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
 class TopDetails extends StatelessWidget {
-  const TopDetails({
-    Key? key,
-    required this.width,
-  }) : super(key: key);
-
-  final double width;
+  const TopDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     return Padding(
       padding: EdgeInsets.all(width * 0.05),
       child: Row(
@@ -29,7 +26,9 @@ class TopDetails extends StatelessWidget {
           TextWS(
             text: 'Product Details',
             width: width,
-            size: 18,fontWeight: FontWeight.w500,color: ColorsConst.textColor,
+            size: 18,
+            fontWeight: FontWeight.w500,
+            color: ColorsConst.textColor,
           ),
           ButtonsApp(
               width: width * 0.09,

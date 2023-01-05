@@ -3,7 +3,7 @@ import 'package:effective/block/state.dart';
 import 'package:effective/help/showsearch_city.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/repository/repository.dart';
-import 'package:effective/widgets/details/details.dart';
+import 'package:effective/widgets/details/loading.dart';
 import 'package:effective/widgets/details/detais_home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

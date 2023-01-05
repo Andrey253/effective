@@ -1,32 +1,35 @@
 import 'package:effective/help/widgets.dart';
 import 'package:effective/model/details_model.dart';
 import 'package:effective/source/consts.dart';
-import 'package:effective/widgets/details/shop_details.dart';
+import 'package:effective/widgets/details/perfomance/details_details.dart';
+import 'package:effective/widgets/details/perfomance/feature_details.dart';
+import 'package:effective/widgets/details/perfomance/shop_details.dart';
 import 'package:flutter/material.dart';
 
-class Perfomance3 extends StatefulWidget {
-  const Perfomance3({
+class PerfomanceBox extends StatefulWidget {
+  const PerfomanceBox({
     Key? key,
     required this.details,
   }) : super(key: key);
   final Details details;
   @override
-  State<Perfomance3> createState() => _Perfomance3State();
+  State<PerfomanceBox> createState() => _PerfomanceBoxState();
 }
 
-class _Perfomance3State extends State<Perfomance3> {
-  final menu = ['Shop', 'Detals', 'Feature'];
+class _PerfomanceBoxState extends State<PerfomanceBox> {
+  List<String> menu = [];
   Map<String, Widget> widgets = {};
 
-  String selected = 'Shop';
+  String selected = '';
   @override
   void initState() {
-    selected = menu.first;
     widgets = {
-      'Shop': ShopdEtails(details: widget.details),
-      'Detals': ShopdEtails(details: widget.details),
-      'Feature': ShopdEtails(details: widget.details)
+      'Shop': ShopDetails(details: widget.details),
+      'Details': DetailsDetails(details: widget.details),
+      'Feature': FeatutrDetails(details: widget.details)
     };
+    menu = widgets.entries.map((e) => e.key).toList();
+    selected = menu.first;
     super.initState();
   }
 
@@ -70,7 +73,8 @@ class _Perfomance3State extends State<Perfomance3> {
                     ),
                   )
                   .toList()),
-                  widgets[selected]!
+          SizedBox(height: 30),
+          widgets[selected]!
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:effective/model/product_model.dart';
 import 'package:equatable/equatable.dart';
 
 Details detailsFromJson(String str) => Details.fromJson(json.decode(str));
@@ -61,6 +62,20 @@ class Details extends Equatable {
         ssd: json["ssd"],
         title: json["title"],
       );
+
+  Product get getProduct => Product(
+      cpu: cpu,
+      camera: camera,
+      capacity: capacity.first,
+      color: color.first,
+      id: id,
+      image: images.first,
+      isFavorites: isFavorites,
+      price: price,
+      quantity: 1,
+      sd: sd,
+      ssd: ssd,
+      title: title);
 
   Map<String, dynamic> toJson() => {
         "CPU": cpu,

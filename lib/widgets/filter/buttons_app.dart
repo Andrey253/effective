@@ -29,6 +29,7 @@ class ButtonsApp extends StatelessWidget {
           ),
           backgroundColor: backgroundColor,
           minimumSize: Size(width, height), // Set this
+          maximumSize: Size(width, height), // Set this
           padding: EdgeInsets.zero,
         ),
         child: child);

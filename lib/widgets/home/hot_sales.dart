@@ -3,7 +3,7 @@ import 'package:effective/block/block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/source/consts.dart';
-import 'package:effective/widgets/details/details.dart';
+import 'package:effective/widgets/details/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

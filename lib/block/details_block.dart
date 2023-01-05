@@ -15,13 +15,24 @@ class DetailsBloc extends Cubit<DetailsState> {
 
   void init() async {
     try {
-      final e = await Dio()
+      final request = await Dio()
           .get(urlDetails, options: Options(responseType: ResponseType.json));
-      final f = Details.fromJson(e.data);
-       print('teg ${f.images}');
-      emit(GetingDetailsDoneState(details: f));
+      final details = Details.fromJson(request.data);
+      repository.details = details;
+      repository.product = details.getProduct;
+      emit(GetingDetailsDoneState(details: details));
     } on Exception catch (e) {
       emit(ErrorDetailsState(error: e.toString()));
     }
+  }
+
+  void setColor(String e) {
+    repository.product = repository.product.copyWith(color: e);
+    emit(UpdateProductState(property: e));
+  }
+
+  void setCapacity(String e) {
+    repository.product = repository.product.copyWith(capacity: e);
+    emit(UpdateProductState(property: e));
   }
 }
