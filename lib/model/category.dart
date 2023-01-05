@@ -1,25 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
-class Category {
-  String name;
-  String asset;
-  bool selected;
-  Category({
+class Category extends Equatable{
+ final String name;
+ final String asset;
+ final bool selected;
+  const Category({
     required this.name,
     required this.asset,
     required this.selected,
   });
-
+  
   @override
-  bool operator ==(covariant Category other) {
-    if (identical(this, other)) return true;
+  List<Object?> get props =>[selected];
 
-    return other.name == name &&
-        other.asset == asset &&
-        other.selected == selected;
-  }
-
-  @override
-  int get hashCode => name.hashCode ^ asset.hashCode ^ selected.hashCode;
+ 
 }

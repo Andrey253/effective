@@ -2,9 +2,7 @@ import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
 
 class HotSalesLine extends StatelessWidget {
-  const HotSalesLine({
-    Key? key,
-  }) : super(key: key);
+  const HotSalesLine({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

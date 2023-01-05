@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 class SelectParamsFilterWidget extends StatelessWidget {
 
   const SelectParamsFilterWidget({
-    Key? key,
-    required this.block, required this.items, required this.value,required this.onChanged,
+    Key? key, required this.items, required this.value,required this.onChanged,
   }) : super(key: key);
 
-  final AppBloc block;
+
   final List<String> items;
   final void Function(String?)? onChanged;
   final String? value;

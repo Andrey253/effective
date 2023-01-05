@@ -1,5 +1,6 @@
 import 'package:effective/model/category.dart';
 import 'package:effective/model/filter_params.dart';
+import 'package:effective/model/store/store.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 abstract class Repository {
@@ -7,30 +8,37 @@ abstract class Repository {
 
   String city = '';
   List<String> listCity = [];
-  FilterParams filterParams = FilterParams();
+  FilterParams filterParams = FilterParams(
+      listBrands: [],
+      listPrices: [],
+      listSizes: [],
+      brand: '',
+      price: '',
+      size: '');
 
   Future<void> setListCategory();
   Future<void> setListCity();
   Future<void> setListPrices();
   Future<void> setListBrand();
   Future<void> setListSizes();
+  Future<Store?> getStore();
+  Store store = Store(homeStore: [], bestSeller: []);
   void selectCategory(Category category) {
-    listCategory.forEach((element) {
-      element.selected = false;
-    });
-    category.selected = true;
+    listCategory = List.from(listCategory.map((e) => Category(
+        name: e.name, asset: e.asset, selected: category.name == e.name)));
   }
 
   Future<String> selectCity(BuildContext context);
-  
-  void setBrend(String? brend) {
-    filterParams.brand = brend;
+
+  void setBrend(String? value) {
+    filterParams = filterParams.copyWith(brand: value);
   }
 
   void setPrice(String? value) {
-    filterParams.price = value;
+    filterParams = filterParams.copyWith(price: value);
   }
+
   void setSize(String? value) {
-    filterParams.size = value;
+    filterParams = filterParams.copyWith(size: value);
   }
 }

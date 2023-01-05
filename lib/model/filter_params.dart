@@ -1,11 +1,20 @@
 class FilterParams {
-  List<String> listBrands = [];
-  List<String> listPrices = [];
-  List<String> listSizes = [];
-  String? brand;
-  String? price;
-  String? size;
-  FilterParams();
+  final List<String> listBrands;
+  final List<String> listPrices;
+  final List<String> listSizes;
+  final String brand;
+  final String price;
+  final String size;
+  FilterParams({
+    required this.listBrands,
+    required this.listPrices,
+    required this.listSizes,
+    required this.brand,
+    required this.price,
+    required this.size,
+  });
+
+ 
 
   @override
   bool operator ==(covariant FilterParams other) {
@@ -19,11 +28,27 @@ class FilterParams {
 
   @override
   int get hashCode {
-    return listBrands.hashCode ^
-      listPrices.hashCode ^
-      listSizes.hashCode ^
+    return 
       brand.hashCode ^
       price.hashCode ^
       size.hashCode;
+  }
+
+  FilterParams copyWith({
+    List<String>? listBrands,
+    List<String>? listPrices,
+    List<String>? listSizes,
+    String? brand,
+    String? price,
+    String? size,
+  }) {
+    return FilterParams(
+      listBrands: listBrands ?? this.listBrands,
+      listPrices: listPrices ?? this.listPrices,
+      listSizes: listSizes ?? this.listSizes,
+      brand: brand ?? this.brand,
+      price: price ?? this.price,
+      size: size ?? this.size,
+    );
   }
 }

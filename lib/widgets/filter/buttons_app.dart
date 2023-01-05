@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class ButtonsApp extends StatelessWidget {
   const ButtonsApp({
     Key? key,
-    required this.block,
     required this.width,
     required this.height,
     required this.circular,
@@ -13,7 +12,6 @@ class ButtonsApp extends StatelessWidget {
     required this.onPressed,
   }) : super(key: key);
 
-  final AppBloc block;
   final double width;
   final double height;
   final double circular;

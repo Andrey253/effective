@@ -15,15 +15,16 @@ class FilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final circular = 30.0;
     final width = MediaQuery.of(context).size.width;
+    final circular = width * 0.08;
     final block = context.read<AppBloc>();
     return BlocBuilder<AppBloc, AppState>(
+        buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => Padding(
               padding: const EdgeInsets.only(top: 10),
               child: Container(
                 height: width * 0.9,
-                padding: EdgeInsets.only(left: 44, right: 20, top: 24),
+                padding: const EdgeInsets.only(left: 44, right: 20, top: 24),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(circular),
@@ -41,7 +42,6 @@ class FilterWidget extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ButtonsApp(
-                            block: block,
                             width: width * 0.09,
                             height: width * 0.09,
                             circular: 10,
@@ -55,7 +55,6 @@ class FilterWidget extends StatelessWidget {
                               fontWeight: FontWeight.w600, fontSize: 18),
                         ),
                         ButtonsApp(
-                            block: block,
                             width: width * 0.21,
                             height: width * 0.09,
                             circular: 10,
@@ -70,23 +69,17 @@ class FilterWidget extends StatelessWidget {
                     ),
                     const SizedBox(height: 40),
                     const NameParamsFilterWidget(name: 'Brand'),
-
                     SelectParamsFilterWidget(
-                        block: block,
                         items: block.repository.filterParams.listBrands,
                         value: block.repository.filterParams.brand,
                         onChanged: block.setBrend),
-                    // const SizedBox(height: 30),
                     const NameParamsFilterWidget(name: 'Price'),
                     SelectParamsFilterWidget(
-                        block: block,
                         items: block.repository.filterParams.listPrices,
                         value: block.repository.filterParams.price,
                         onChanged: block.setPrice),
-
                     const NameParamsFilterWidget(name: 'Size'),
                     SelectParamsFilterWidget(
-                        block: block,
                         items: block.repository.filterParams.listSizes,
                         value: block.repository.filterParams.size,
                         onChanged: block.setSize),
@@ -96,4 +89,3 @@ class FilterWidget extends StatelessWidget {
             ));
   }
 }
-

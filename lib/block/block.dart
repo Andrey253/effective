@@ -14,6 +14,7 @@ class AppBloc extends Cubit<AppState> {
     setListCity();
     setListCategory();
     setFilterParams();
+    getStore();
   }
 
   final Repository repository;
@@ -25,7 +26,7 @@ class AppBloc extends Cubit<AppState> {
 
   void selectCategory(Category category) {
     repository.selectCategory(category);
-    emit(SelectCategoryState(category));
+    emit(SelectCategoryState(repository.listCategory));
   }
 
   void setListCategory() async {
@@ -38,8 +39,10 @@ class AppBloc extends Cubit<AppState> {
     emit(SelectCityState(city: repository.city));
   }
 
-  filter(String v) {
-    emit(FilterState(v));
+  void openFilter() {
+    emit(state is FilterState
+        ? const CancelFilterState()
+        : FilterState(repository.filterParams));
   }
 
   void cancelFilter() {
@@ -59,22 +62,26 @@ class AppBloc extends Cubit<AppState> {
 
   void setBrend(String? value) {
     repository.setBrend(value);
-    if (value != null) {
-      emit(FilterState(value));
-    }
+
+    emit(FilterState(repository.filterParams));
   }
 
   void setPrice(String? value) {
-        repository.setPrice(value);
+    repository.setPrice(value);
     if (value != null) {
-      emit(FilterState(value));
+      emit(FilterState(repository.filterParams));
     }
   }
 
   void setSize(String? value) {
-            repository.setSize(value);
+    repository.setSize(value);
     if (value != null) {
-      emit(FilterState(value));
+      emit(FilterState(repository.filterParams));
     }
+  }
+
+  void getStore() async {
+    await repository.getStore();
+    emit(const StartState());
   }
 }

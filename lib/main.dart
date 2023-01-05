@@ -12,7 +12,7 @@ import 'package:effective/widgets/categories.dart';
 import 'package:effective/widgets/line/filter_line.dart';
 import 'package:effective/widgets/line/best_saller.dart';
 import 'package:effective/widgets/line/hot_sales.dart';
-import 'package:effective/widgets/list_home_store.dart';
+import 'package:effective/widgets/hot_sales.dart';
 import 'package:effective/widgets/search_field.dart';
 import 'package:effective/widgets/line/select_category.dart';
 import 'package:flutter/material.dart';
@@ -52,12 +52,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late Store store;
-  @override
-  void initState() {
-    store = Store.fromJson(a);
-    super.initState();
-  }
 //flutter build apk --split-per-abi
   @override
   Widget build(BuildContext context) {
@@ -68,15 +62,15 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             Expanded(
               child: ListView(
-                children: <Widget>[
-                  const FilterLine(),
-                  const SelectCategoryLine(),
-                  const CategoryesWidget(),
-                  const SearchField(),
-                  const HotSalesLine(),
-                  ListHomeStore(store: store),
-                  const BestSellerLine(),
-                  BestSellerWidget(store: store),
+                children: const <Widget>[
+                  FilterLine(),
+                  SelectCategoryLine(),
+                  CategoryesWidget(),
+                  SearchField(),
+                  HotSalesLine(),
+                  HotSales(),
+                  BestSellerLine(),
+                  BestSellerWidget(),
                 ],
               ),
             ),

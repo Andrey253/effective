@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class HomeStore {
     HomeStore({
         required this.id,
@@ -32,4 +33,23 @@ class HomeStore {
         "picture": picture,
         "is_buy": isBuy,
     };
+
+  @override
+  bool operator ==(covariant HomeStore other) {
+
+  
+    return 
+      other.id == id &&
+      other.picture == picture ;
+  }
+
+  @override
+  int get hashCode {
+    return id.hashCode ^
+      isNew.hashCode ^
+      title.hashCode ^
+      subtitle.hashCode ^
+      picture.hashCode ^
+      isBuy.hashCode;
+  }
 }

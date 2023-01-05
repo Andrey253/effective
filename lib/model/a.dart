@@ -1,4 +1,4 @@
-const a = {
+const jsonStore = {
   'home_store': [
     {
       "id": 1,

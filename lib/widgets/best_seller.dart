@@ -10,15 +10,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class BestSellerWidget extends StatelessWidget {
   const BestSellerWidget({
     Key? key,
-    required this.store,
   }) : super(key: key);
 
-  final Store store;
 
   @override
   Widget build(BuildContext context) {
     final circular = 20.0;
     final width = MediaQuery.of(context).size.width;
+        final block = context.read<AppBloc>();
     return BlocBuilder<AppBloc, AppState>(
         builder: (context, state) => state is FilterState
             ? const FilterWidget()
@@ -29,7 +28,7 @@ class BestSellerWidget extends StatelessWidget {
                   primary: false,
                   crossAxisCount: 2,
                   childAspectRatio: 4 / 5,
-                  children: store.bestSeller
+                  children: block.repository.store.bestSeller
                       .map((e) => Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: Container(

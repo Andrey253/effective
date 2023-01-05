@@ -1,11 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // To parse this JSON data, do
 //
 //     final sotore = sotoreFromJson(jsonString);
 
-import 'package:effective/model/store/best-seller.dart';
-import 'package:effective/model/store/home_store.dart';
-import 'package:meta/meta.dart';
 import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
+
+import 'package:effective/model/store/best_seller.dart';
+import 'package:effective/model/store/home_store.dart';
 
 Store sotoreFromJson(String str) => Store.fromJson(json.decode(str));
 
@@ -31,4 +35,16 @@ class Store {
         "home_store": List<dynamic>.from(homeStore.map((x) => x.toJson())),
         "best_seller": List<dynamic>.from(bestSeller.map((x) => x.toJson())),
       };
+
+  @override
+  bool operator ==(covariant Store other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      listEquals(other.homeStore, homeStore) &&
+      listEquals(other.bestSeller, bestSeller);
+  }
+
+  @override
+  int get hashCode => homeStore.hashCode ^ bestSeller.hashCode;
 }

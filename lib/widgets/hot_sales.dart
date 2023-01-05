@@ -1,24 +1,26 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:effective/block/block.dart';
+import 'package:effective/block/state.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ListHomeStore extends StatelessWidget {
-  const ListHomeStore({
+class HotSales extends StatelessWidget {
+  const HotSales({
     Key? key,
-    required this.store,
   }) : super(key: key);
-
-  final Store store;
 
   @override
   Widget build(BuildContext context) {
+    final block = context.read<AppBloc>();
     final width = MediaQuery.of(context).size.width;
     final f = width * 0.31;
     final radiusNew = width * 0.032;
     final circular = width * 0.024;
     // print('teg $width');
-    return Padding(
+    return BlocBuilder<AppBloc, AppState>(
+        builder: (context, state) =>Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
       child: Container(
         height: 220,
@@ -47,7 +49,8 @@ class ListHomeStore extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (store.homeStore[index].isNew == true)
+                        if (block.repository.store.homeStore[index].isNew ==
+                            true)
                           CircleAvatar(
                             backgroundColor: ColorsConst.red,
                             radius: radiusNew,
@@ -59,9 +62,13 @@ class ListHomeStore extends StatelessWidget {
                                   fontFamily: 'SFPRODISPLAYREGULAR',
                                   fontSize: width * 0.022),
                             ),
-                          )else Container(height: radiusNew*2,),
+                          )
+                        else
+                          Container(
+                            height: radiusNew * 2,
+                          ),
                         Text(
-                          store.homeStore[index].title,
+                          block.repository.store.homeStore[index].title,
                           style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: Colors.white,
@@ -69,7 +76,7 @@ class ListHomeStore extends StatelessWidget {
                               fontSize: width * 0.055),
                         ),
                         Text(
-                          store.homeStore[index].subtitle,
+                          block.repository.store.homeStore[index].subtitle,
                           style: TextStyle(
                               fontWeight: FontWeight.w400,
                               color: Colors.white,
@@ -103,23 +110,25 @@ class ListHomeStore extends StatelessWidget {
                 width: width - 15 * 2 - f,
                 height: 220,
                 child: Container(
-                  decoration: BoxDecoration(color: Colors.black,
+                  decoration: BoxDecoration(
+                    color: Colors.black,
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(circular),
                         bottomRight: Radius.circular(circular)),
                     image: DecorationImage(
                       alignment: Alignment.centerLeft,
                       fit: BoxFit.fitHeight,
-                      image: NetworkImage(store.homeStore[index].picture),
+                      image: NetworkImage(
+                          block.repository.store.homeStore[index].picture),
                     ),
                   ),
                 ),
               ),
             ],
           ),
-          itemCount: store.homeStore.length,
+          itemCount: block.repository.store.homeStore.length,
         ),
       ),
-    );
+    ));
   }
 }

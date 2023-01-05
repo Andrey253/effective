@@ -1,6 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:effective/help/showsearch_city.dart';
+import 'package:effective/model/a.dart';
 import 'package:effective/model/category.dart';
+import 'package:effective/model/filter_params.dart';
+import 'package:effective/model/store/store.dart';
 import 'package:effective/repository/repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -42,33 +45,38 @@ class RepositoryImplementation extends Repository {
   @override
   Future<void> setListBrand() async {
     await Future.delayed(const Duration(milliseconds: 1000));
-    filterParams.listBrands = ['Samsung', 'Huawei', 'Poco', 'Xiaomi', 'Realme'];
-    setBrend(filterParams.listBrands.first);
+    final listB = ['Samsung', 'Huawei', 'Poco', 'Xiaomi', 'Realme'];
+    filterParams = filterParams.copyWith(listBrands: listB, brand: listB.first);
   }
-
- 
 
   @override
   Future<void> setListPrices() async {
     await Future.delayed(const Duration(milliseconds: 900));
-    filterParams.listPrices = [
+    final listP = [
       '\$100 - \$300',
       '\$300 - \$500',
       '\$500 - \$800',
       '\$800 - \$1000',
     ];
-    filterParams.price = filterParams.listPrices.first;
+    filterParams = filterParams.copyWith(listPrices: listP, price: listP.first);
   }
 
   @override
   Future<void> setListSizes() async {
     await Future.delayed(const Duration(milliseconds: 800));
-    filterParams.listSizes = [
+    final listS = [
       '4.5 to 5.5 inches',
       '5.5 to 6.5 inches',
       '6.5 to 7.5 inches',
       '7.5 more inches',
     ];
-    filterParams.size = filterParams.listSizes.first;
+    filterParams = filterParams.copyWith(listSizes: listS, size: listS.first);
+  }
+
+  @override
+  Future<Store?> getStore() async {
+    await Future.delayed(const Duration(milliseconds: 700));
+    store = Store.fromJson(jsonStore);
+    return store;
   }
 }

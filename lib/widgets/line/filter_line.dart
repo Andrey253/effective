@@ -6,9 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
 class FilterLine extends StatelessWidget {
-  const FilterLine({
-    Key? key,
-  }) : super(key: key);
+  const FilterLine({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,7 @@ class FilterLine extends StatelessWidget {
                     ],
                   ),
                   IconButton(
-                    onPressed: () => block.filter('open'),
+                    onPressed: () => block.openFilter(),
                     icon: const SvgIcon(
                         size: 15, icon: SvgIconData('assets/svg/filter.svg')),
                   ),

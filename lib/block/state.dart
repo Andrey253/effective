@@ -16,10 +16,10 @@ class StartState extends AppState {
 }
 
 class SelectCategoryState extends AppState {
-  const SelectCategoryState(this.cat);
-  final Category cat;
+  const SelectCategoryState(this.listCategory);
+  final List<Category> listCategory;
   @override
-  List<Object> get props => [cat];
+  List<Object> get props => [listCategory];
 }
 
 class SetCategoryState extends AppState {
@@ -40,7 +40,7 @@ class SelectCityState extends AppState {
 
 class FilterState extends AppState {
   const FilterState(this.value);
-  final String value;
+  final FilterParams value;
 
   @override
   List<Object> get props => [value];
