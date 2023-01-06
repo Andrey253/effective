@@ -1,4 +1,4 @@
-import 'package:effective/block/block.dart';
+import 'package:effective/block/home_block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/source/consts.dart';
@@ -13,7 +13,7 @@ class CategoryesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final block = context.read<AppBloc>();
+    final block = context.read<HomeBloc>();
     final width = MediaQuery.of(context).size.width;
     final radius = width * 0.075;
     final padding = radius / 2.5;
@@ -25,7 +25,7 @@ class CategoryesWidget extends StatelessWidget {
       height: (radius + padding) * 2 + heightText,
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: BlocBuilder<AppBloc, HomeState>(
+          child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) => ListView(
                   scrollDirection: Axis.horizontal,
                   children: block.repository.listCategory

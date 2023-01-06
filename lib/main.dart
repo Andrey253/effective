@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:effective/block/block.dart';
+import 'package:effective/block/home_block.dart';
+import 'package:effective/block/state.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/repository/repository_implementation.dart';
 import 'package:effective/source/consts.dart';
@@ -24,12 +25,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<AppBloc>(
-        create: (_) => AppBloc(RepositoryImplementation()),
-        child: MaterialApp(
-          title: 'Home',
-          theme: ThemeData(fontFamily: 'Mark-Pro'),
-          home: const MyHomePage(),
+    return MaterialApp(
+        title: 'Home',
+        theme: ThemeData(fontFamily: MarkPro),
+        home: BlocProvider<HomeBloc>(
+          create: (_) => HomeBloc(
+              repository: RepositoryImplementation(), type: const StartState()),
+          child: const MyHomePage(),
         ));
   }
 }

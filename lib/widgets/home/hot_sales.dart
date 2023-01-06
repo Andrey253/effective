@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:effective/block/block.dart';
+import 'package:effective/block/home_block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/source/consts.dart';
@@ -14,13 +14,13 @@ class HotSales extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final block = context.read<AppBloc>();
+    final block = context.read<HomeBloc>();
     final width = MediaQuery.of(context).size.width;
     final f = width * 0.31;
     final radiusNew = width * 0.032;
     final circular = width * 0.024;
     // print('teg $width');
-    return BlocBuilder<AppBloc, HomeState>(
+    return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
               child: Container(
@@ -50,8 +50,7 @@ class HotSales extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                if (block.repository.store.homeStore[index]
-                                        .isNew ==
+                                if (block.repository.store.homeStore[index].isNew ==
                                     true)
                                   CircleAvatar(
                                     backgroundColor: ColorsConst.red,
@@ -78,8 +77,7 @@ class HotSales extends StatelessWidget {
                                       fontSize: width * 0.055),
                                 ),
                                 Text(
-                                  block.repository.store.homeStore[index]
-                                      .subtitle,
+                                  block.repository.store.homeStore[index].subtitle,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white,
@@ -87,7 +85,8 @@ class HotSales extends StatelessWidget {
                                       fontSize: width * 0.024),
                                 ),
                                 ElevatedButton(
-                                    onPressed: () => block.navigateToDetails(context,urlDetails,block.repository),
+                                    onPressed: () => block.navigateToDetails(
+                                        context, urlDetails, block.repository),
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.white,
                                       minimumSize: Size(width * 0.23,
@@ -121,8 +120,8 @@ class HotSales extends StatelessWidget {
                             image: DecorationImage(
                               alignment: Alignment.centerLeft,
                               fit: BoxFit.fitHeight,
-                              image: NetworkImage(block
-                                  .repository.store.homeStore[index].picture),
+                              image: NetworkImage(
+                                  block.repository.store.homeStore[index].picture),
                             ),
                           ),
                         ),

@@ -1,5 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:effective/block/block.dart';
+import 'package:effective/block/home_block.dart';
 import 'package:effective/block/details_block.dart';
 import 'package:effective/block/details_state.dart';
 import 'package:effective/source/consts.dart';

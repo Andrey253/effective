@@ -20,7 +20,7 @@ abstract class Repository {
 
   late Details details;
   late Product product;
-  List<Product> wallet = [];
+  List<Product> cart = [];
 
   Future<void> setListCategory();
   Future<void> setListCity();

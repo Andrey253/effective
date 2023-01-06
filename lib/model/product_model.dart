@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class Product {
-    final String cpu;
+import 'package:equatable/equatable.dart';
+
+class Product extends Equatable {
+  final String cpu;
   final String camera;
   final String capacity;
   final String color;
@@ -12,7 +14,7 @@ class Product {
   final String sd;
   final String ssd;
   final String title;
-  Product({
+  const Product({
     required this.cpu,
     required this.camera,
     required this.capacity,
@@ -56,4 +58,21 @@ class Product {
       title: title ?? this.title,
     );
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        cpu,
+        camera,
+        capacity,
+        color,
+        id,
+        image,
+        isFavorites,
+        price,
+        quantity,
+        sd,
+        ssd,
+        title
+      ];
 }

@@ -1,4 +1,3 @@
-
 import 'package:effective/block/details_block.dart';
 import 'package:effective/block/details_state.dart';
 import 'package:effective/help/widgets.dart';
@@ -90,26 +89,32 @@ class Perfomance extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             ...block.repository.details.color
-                                .map((e) => GestureDetector(onTap:()=> block.setColor(e),
-                                  child: CircleAvatar(
+                                .map((e) => GestureDetector(
+                                      onTap: () => block.setColor(e),
+                                      child: CircleAvatar(
                                         backgroundColor: colorFromHex(e),
-                                        child:e==block.repository.product.color? const Icon(Icons.done):null,
+                                        child: e == block.repository.product.color
+                                            ? const Icon(Icons.done)
+                                            : null,
                                       ),
-                                )),
+                                    )),
                             const SizedBox(width: 40),
-                            ...block.repository.details.capacity.map((e) =>
-                                ButtonsApp(
-                                    width: width * 0.17,
-                                    height: width * 0.07,
-                                    circular: 12,
-                                    backgroundColor:e==block.repository.product.capacity? ColorsConst.red:Colors.white,
-                                    onPressed: (() => block.setCapacity(e)),
-                                    child: TextWS(
-                                        text: e,
-                                        width: width,
-                                        size: 13,
-                                        fontWeight: FontWeight.w700,
-                                        color:e==block.repository.product.capacity? Colors.white:ColorsConst.capacity))),
+                            ...block.repository.details.capacity.map((e) => ButtonsApp(
+                                width: width * 0.17,
+                                height: width * 0.07,
+                                circular: 12,
+                                backgroundColor: e == block.repository.product.capacity
+                                    ? ColorsConst.red
+                                    : Colors.white,
+                                onPressed: (() => block.setCapacity(e)),
+                                child: TextWS(
+                                    text: e,
+                                    width: width,
+                                    size: 13,
+                                    fontWeight: FontWeight.w700,
+                                    color: e == block.repository.product.capacity
+                                        ? Colors.white
+                                        : ColorsConst.capacity))),
                           ],
                         ),
                       ),
@@ -119,6 +124,7 @@ class Perfomance extends StatelessWidget {
                             height: width * 0.13,
                             circular: 15,
                             backgroundColor: ColorsConst.red,
+                            onPressed: block.addToCart,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
@@ -129,15 +135,13 @@ class Perfomance extends StatelessWidget {
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white),
                                 TextWS(
-                                    text:
-                                        '\$ ${block.repository.details.price}',
+                                    text: '\$ ${block.repository.details.price}',
                                     width: width,
                                     size: 20,
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white)
                               ],
-                            ),
-                            onPressed: () {}),
+                            )),
                       ),
                       SizedBox(height: 40)
                     ],

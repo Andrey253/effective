@@ -3,11 +3,13 @@ import 'package:effective/model/filter_params.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:effective/model/category.dart';
-
-abstract class HomeState extends Equatable {
-  const HomeState();
+abstract class AppState extends Equatable {
+  const AppState();
 }
 
+abstract class HomeState extends AppState {
+  const HomeState();
+}
 class StartState extends HomeState {
   const StartState();
 

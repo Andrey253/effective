@@ -1,3 +1,5 @@
+import 'package:effective/block/cart_block.dart';
+import 'package:effective/block/cart_state.dart';
 import 'package:effective/block/details_block.dart';
 import 'package:effective/block/details_state.dart';
 import 'package:effective/help/widgets.dart';
@@ -7,17 +9,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';
 
-class TopDetails extends StatelessWidget {
-  const TopDetails({Key? key}) : super(key: key);
+class TopCart extends StatelessWidget {
+  const TopCart({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final block = context.read<DetailsBloc>();
-    return BlocBuilder<DetailsBloc, DetailsState>(
+    final block = context.read<CartBlock>();
+    return BlocBuilder<CartBlock, CartState>(
         // buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => Padding(
-              padding: EdgeInsets.all(width * 0.0),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -29,7 +31,7 @@ class TopDetails extends StatelessWidget {
                       child: const Icon(Icons.keyboard_arrow_left, size: 35),
                       onPressed: () => Navigator.of(context).pop()),
                   TextWS(
-                    text: 'Product Details',
+                    text: 'Add address',
                     width: width,
                     size: 18,
                     fontWeight: FontWeight.w500,
@@ -41,11 +43,12 @@ class TopDetails extends StatelessWidget {
                         height: width * 0.09,
                         circular: 10,
                         backgroundColor: ColorsConst.red,
-                        onPressed:() =>  block.navigateToCart(context, block. repository),
-                        child: const SvgIcon(
-                            color: Colors.white,
-                            size: 20,
-                            icon: SvgIconData('assets/svg/wallet.svg'))),
+                        onPressed: () {},
+                        child: const Icon(
+                          Icons.place_outlined,
+                          color: Colors.white,
+                          size: 25,
+                        )),
                     if (block.repository.cart.isNotEmpty)
                       CircleAvatar(
                           radius: 10,

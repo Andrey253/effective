@@ -1,4 +1,4 @@
-import 'package:effective/block/block.dart';
+import 'package:effective/block/home_block.dart';
 import 'package:flutter/material.dart';
 
 class SelectParamsFilterWidget extends StatelessWidget {

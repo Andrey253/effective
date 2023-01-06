@@ -1,4 +1,5 @@
 import 'package:effective/model/details_model.dart';
+import 'package:effective/model/product_model.dart';
 import 'package:equatable/equatable.dart';
 
 
@@ -34,4 +35,11 @@ class UpdateProductState extends DetailsState {
 
   @override
   List<Object> get props => [property];
+}
+class UpdateCartState extends DetailsState {
+  const UpdateCartState({required this.cart});
+  final List<Product> cart;
+
+  @override
+  List<Object> get props => [cart];
 }

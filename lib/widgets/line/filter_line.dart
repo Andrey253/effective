@@ -1,4 +1,4 @@
-import 'package:effective/block/block.dart';
+import 'package:effective/block/home_block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +10,11 @@ class FilterLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final block = context.read<AppBloc>();
+    final block = context.read<HomeBloc>();
 
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: BlocBuilder<AppBloc, HomeState>(
+        child: BlocBuilder<HomeBloc, HomeState>(
             buildWhen: (previous, current) => current is SelectCityState,
             builder: (context, state) {
               return Row(

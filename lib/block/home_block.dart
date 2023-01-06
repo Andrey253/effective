@@ -1,15 +1,25 @@
-import 'package:effective/block/details_state.dart';
-import 'package:effective/block/state.dart';
-import 'package:effective/help/showsearch_city.dart';
-import 'package:effective/model/category.dart';
-import 'package:effective/repository/repository.dart';
-import 'package:effective/widgets/details/loading.dart';
-import 'package:effective/widgets/details/detais_home.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AppBloc extends Cubit<HomeState> {
-  AppBloc(this.repository) : super(const StartState()) {
+import 'package:effective/block/state.dart';
+import 'package:effective/model/category.dart';
+import 'package:effective/repository/repository.dart';
+import 'package:effective/repository/repository_implementation.dart';
+import 'package:effective/widgets/details/detais_home.dart';
+
+abstract class AppBlock<T> extends Cubit<T> {
+  late Repository repository;
+  final T type;
+  AppBlock({
+    required this.repository,
+    required this.type,
+  }) : super(type);
+}
+
+class HomeBloc extends AppBlock<HomeState> {
+  HomeBloc({required super.repository, required super.type}) {
     init();
   }
 
@@ -19,8 +29,6 @@ class AppBloc extends Cubit<HomeState> {
     setFilterParams();
     getStore();
   }
-
-  final Repository repository;
 
   void selectCity(BuildContext context) async {
     final city = await repository.selectCity(context);
@@ -88,9 +96,13 @@ class AppBloc extends Cubit<HomeState> {
     emit(const StartState());
   }
 
-  void navigateToDetails(BuildContext context, String url,Repository repository) async {
+  void navigateToDetails(
+      BuildContext context, String url, Repository repository) async {
     await Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) =>  DetailsHome(repository: repository,url: url,),
+      builder: (context) => DetailsHome(
+        repository: repository,
+        url: url,
+      ),
     ));
     // emit(GetingDetails(url: url));
   }

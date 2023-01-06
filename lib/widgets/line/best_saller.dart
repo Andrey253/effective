@@ -1,4 +1,4 @@
-import 'package:effective/block/block.dart';
+import 'package:effective/block/home_block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +11,7 @@ class BestSellerLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppBloc, HomeState>(
+    return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) => state is FilterState
             ? const SizedBox.shrink()
             : Padding(

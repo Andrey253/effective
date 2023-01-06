@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:effective/block/block.dart';
+import 'package:effective/block/home_block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/widgets/filter/buttons_app.dart';
@@ -17,8 +17,8 @@ class FilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final circular = width * 0.08;
-    final block = context.read<AppBloc>();
-    return BlocBuilder<AppBloc, HomeState>(
+    final block = context.read<HomeBloc>();
+    return BlocBuilder<HomeBloc, HomeState>(
         buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => Padding(
               padding: const EdgeInsets.only(top: 10),

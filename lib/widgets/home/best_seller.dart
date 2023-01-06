@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:effective/block/block.dart';
+import 'package:effective/block/home_block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/source/consts.dart';
@@ -16,8 +16,8 @@ class BestSellerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final circular = 20.0;
     final width = MediaQuery.of(context).size.width;
-    final block = context.read<AppBloc>();
-    return BlocBuilder<AppBloc, HomeState>(
+    final block = context.read<HomeBloc>();
+    return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) => state is FilterState
             ? const FilterWidget()
             : Padding(
