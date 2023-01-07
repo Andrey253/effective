@@ -6,7 +6,7 @@ import 'package:effective/block/home_state.dart';
 import 'package:effective/repository/repository_implementation.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/widgets/flash/flash.dart';
-import 'package:effective/widgets/home/best_seller.dart';
+import 'package:effective/widgets/home/best_seller/best_seller.dart';
 import 'package:effective/widgets/home/botom_sheet.dart';
 import 'package:effective/widgets/home/categories.dart';
 import 'package:effective/widgets/home/hot_sales.dart';

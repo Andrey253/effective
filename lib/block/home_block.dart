@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:effective/block/block.dart';
+import 'package:effective/model/store/best_seller.dart';
 import 'package:flutter/material.dart';
 import 'package:effective/block/home_state.dart';
 import 'package:effective/model/category.dart';
@@ -81,7 +82,7 @@ class HomeBloc extends AppBlock<HomeState> {
   }
 
   void getStore() async {
-    final store =await repository.getStore();
+    final store = await repository.getStore();
     emit(UpdateStoreState(store: store));
   }
 
@@ -95,4 +96,9 @@ class HomeBloc extends AppBlock<HomeState> {
     ));
     // emit(GetingDetails(url: url));
   }
+
+  String discounPr(BestSeller e) => '\$ ${e.discountPrice.toString()}';
+
+  String priceWitghoutDisc(BestSeller e) =>
+      '\$ ${e.priceWithoutDiscount.toString()}';
 }

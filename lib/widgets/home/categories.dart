@@ -1,6 +1,7 @@
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/home_state.dart';
 
+import 'package:effective/model/category.dart';
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,12 +18,12 @@ class CategoryesWidget extends StatelessWidget {
 
     final width = MediaQuery.of(context).size.width;
 
-    final radius = width * 0.075;
+    // final radius = width * 0.08;
 
-    final padding = radius / 2.5;
+    // final padding = radius / 2.5;
 
     return SizedBox(
-      height: (radius + padding) * 2 + width * 0.04,
+      height: width * 0.25,
       child: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.03),
           child: BlocBuilder<HomeBloc, HomeState>(
@@ -31,36 +32,48 @@ class CategoryesWidget extends StatelessWidget {
                   children: block.repository.listCategory
                       .map((e) => Column(
                             children: [
-                              GestureDetector(
-                                onTap: () => block.selectCategory(e),
-                                child: CircleAvatar(
-                                  backgroundColor: ColorsConst.padding,
-                                  radius: (padding + radius),
-                                  child: CircleAvatar(
-                                      backgroundColor: ColorsConst.red,
-                                      radius: radius,
-                                      child: SvgIcon(
-                                          color: e.selected
-                                              ? Colors.white
-                                              : ColorsConst.grey,
-                                          size: 30,
-                                          icon: SvgIconData(e.asset))),
-                                ),
-                              ),
-                              SizedBox(
-                                height: width * 0.04,
-                                child: Text(
-                                  e.name,
-                                  style: TextStyle(
-                                      color: e.selected
-                                          ? ColorsConst.red
-                                          : ColorsConst.textColor,
-                                      fontSize: 15),
-                                ),
-                              )
+                              itemCategory(block, e, width),
+                              nameCategory(width, e)
                             ],
                           ))
                       .toList()))),
+    );
+  }
+
+  SizedBox nameCategory(double width, Category e) {
+    return SizedBox(
+      height: width * 0.04,
+      child: Text(
+        e.name,
+        style: TextStyle(
+            color: e.selected ? ColorsConst.red : ColorsConst.textColor,
+            fontSize: 15),
+      ),
+    );
+  }
+
+  GestureDetector itemCategory(HomeBloc block, Category e, double width) {
+    return GestureDetector(
+      onTap: () => block.selectCategory(e),
+      child: Padding(
+        padding: EdgeInsets.all(width * 0.025),
+        child: Container(
+            height: width * 0.16,
+            width: width * 0.16,
+            decoration: BoxDecoration(
+              boxShadow: const [
+                BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 2)
+              ],
+              shape: BoxShape.circle,
+              color: e.selected ? ColorsConst.red : Colors.white,
+            ),
+            child: Center(
+              child: SvgIcon(
+                  color: e.selected ? Colors.white : ColorsConst.grey,
+                  size: 30,
+                  icon: SvgIconData(e.asset)),
+            )),
+      ),
     );
   }
 }

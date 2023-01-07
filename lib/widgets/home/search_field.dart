@@ -20,43 +20,57 @@ class SearchField extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                height: h + padding,
+                margin: EdgeInsets.all(padding),
+                height: width * 0.09,
                 decoration: BoxDecoration(
-                    color: ColorsConst.padding,
-                    borderRadius:
-                        BorderRadius.all(Radius.circular((h + padding) / 2))),
-                child: Container(
-                  margin: EdgeInsets.all(padding),
-                  height: h,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.red),
-                      borderRadius: BorderRadius.all(Radius.circular(h / 2))),
-                  child: const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: TextField(
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: ColorsConst.red,
-                            ),
-                            hintText: "Search",
-                            border: InputBorder.none)),
-                  ),
+                    boxShadow: const [
+                      BoxShadow(
+                          color: Colors.grey, blurRadius: 10, spreadRadius: 2)
+                    ],
+                    color: Colors.white,
+                    border: Border.all(color: Colors.red),
+                    borderRadius: BorderRadius.all(Radius.circular(h / 2))),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: TextField(
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: ColorsConst.red,
+                          ),
+                          hintText: "Search",
+                          border: InputBorder.none)),
                 ),
               ),
             ),
-            CircleAvatar(
-              backgroundColor: ColorsConst.padding,
-              radius: (h + padding) / 2,
-              child: CircleAvatar(
-                  backgroundColor: ColorsConst.red,
-                  radius: (h - padding) / 2,
+            // CircleAvatar(
+            //   backgroundColor: ColorsConst.padding,
+            //   radius: (h + padding) / 2,
+            //   child: CircleAvatar(
+            //       backgroundColor: ColorsConst.red,
+            //       radius: (h - padding) / 2,
+            //       child: SvgIcon(
+            //           color: Colors.white,
+            //           size: width * 0.05,
+            //           icon: const SvgIconData('assets/svg/search_param.svg'))),
+            // ),
+            Container(
+                height: width * 0.09,
+                width: width * 0.09,
+                decoration: BoxDecoration(
+                  boxShadow: const [
+                    BoxShadow(
+                        color: Colors.grey, blurRadius: 10, spreadRadius: 2)
+                  ],
+                  shape: BoxShape.circle,
+                  color: ColorsConst.red,
+                ),
+                child: Center(
                   child: SvgIcon(
                       color: Colors.white,
-                      size: width * 0.05,
-                      icon: const SvgIconData('assets/svg/search_param.svg'))),
-            )
+                      size: 25,
+                      icon: const SvgIconData('assets/svg/search_param.svg')),
+                ))
           ],
         ));
   }
