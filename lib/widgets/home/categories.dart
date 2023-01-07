@@ -18,26 +18,19 @@ class CategoryesWidget extends StatelessWidget {
 
     final width = MediaQuery.of(context).size.width;
 
-    // final radius = width * 0.08;
-
-    // final padding = radius / 2.5;
-
     return SizedBox(
-      height: width * 0.25,
-      child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * 0.03),
-          child: BlocBuilder<HomeBloc, HomeState>(
-              builder: (context, state) => ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: block.repository.listCategory
-                      .map((e) => Column(
-                            children: [
+        height: width * 0.25,
+        child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.03),
+            child: BlocBuilder<HomeBloc, HomeState>(
+                builder: (context, state) => ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: block.repository.listCategory
+                        .map((e) => Column(children: [
                               itemCategory(block, e, width),
                               nameCategory(width, e)
-                            ],
-                          ))
-                      .toList()))),
-    );
+                            ]))
+                        .toList()))));
   }
 
   SizedBox nameCategory(double width, Category e) {

@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 
-class SelectParamsFilterWidget extends StatelessWidget {
-  const SelectParamsFilterWidget({
+class DropButtonFilter extends StatelessWidget {
+  const DropButtonFilter({
     Key? key,
     required this.items,
     required this.value,
@@ -17,9 +16,8 @@ class SelectParamsFilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final width = MediaQuery.of(context).size.width;
-    
+
     return Padding(
       padding: EdgeInsets.only(
           top: width * 0.02, bottom: width * 0.035, right: width * 0.02),

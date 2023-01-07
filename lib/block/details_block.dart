@@ -14,6 +14,8 @@ class DetailsBloc extends AppBlock<DetailsState> {
     init();
   }
 
+  get priceProduct => '\$ ${repository.details.price.toStringAsFixed(2)}';
+
   void init() async {
     try {
       await repository.getDetails();

@@ -50,11 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
   bool splash = true;
   @override
   void initState() {
-    Timer(
-        const Duration(milliseconds: 5000),
-        (() => setState(() {
-              splash = false;
-            })));
+    Timer(const Duration(milliseconds: 5000),
+        (() => setState(() => splash = false)));
     super.initState();
   }
 

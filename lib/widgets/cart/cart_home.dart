@@ -29,17 +29,21 @@ class CartWidget extends StatelessWidget {
             backgroundColor: ColorsConst.backGround,
             body:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: width * 0.08, vertical: width * 0.1),
-                child: TextWS(
-                    text: 'My Cart',
-                    width: width,
-                    size: 35,
-                    fontWeight: FontWeight.w700,
-                    color: ColorsConst.textColor),
-              ),
-              const BoxCart()
+              textMyCart(width),
+              const BoxCart(),
             ])));
+  }
+
+  Padding textMyCart(double width) {
+    return Padding(
+      padding:
+          EdgeInsets.symmetric(horizontal: width * 0.08, vertical: width * 0.1),
+      child: TextWS(
+          text: 'My Cart',
+          width: width,
+          size: 35,
+          fontWeight: FontWeight.w700,
+          color: ColorsConst.textColor),
+    );
   }
 }

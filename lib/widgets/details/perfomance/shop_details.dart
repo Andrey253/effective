@@ -10,82 +10,32 @@ class ShopDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: SvgIcon(
-                      color: ColorsConst.details,
-                      size: 28,
-                      icon: SvgIconData('assets/svg/perfomance/cpu.svg')),
-                ),
-                TextWS(
-                    text: details.cpu,
-                    width: width,
-                    size: 11,
-                    fontWeight: FontWeight.w400,
-                    color: ColorsConst.details),
-              ],
-            ),
-            Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: SvgIcon(
-                      color: ColorsConst.details,
-                      size: 28,
-                      icon: SvgIconData('assets/svg/perfomance/camera.svg')),
-                ),
-                TextWS(
-                    text: details.camera,
-                    width: width,
-                    size: 11,
-                    fontWeight: FontWeight.w400,
-                    color: ColorsConst.details),
-              ],
-            ),
-            Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: SvgIcon(
-                      color: ColorsConst.details,
-                      size: 28,
-                      icon: SvgIconData('assets/svg/perfomance/ssd.svg')),
-                ),
-                TextWS(
-                    text: details.ssd,
-                    width: width,
-                    size: 11,
-                    fontWeight: FontWeight.w400,
-                    color: ColorsConst.details),
-              ],
-            ),
-            Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: SvgIcon(
-                      color: ColorsConst.details,
-                      size: 28,
-                      icon: SvgIconData('assets/svg/perfomance/sd.svg')),
-                ),
-                TextWS(
-                    text: details.sd,
-                    width: width,
-                    size: 11,
-                    fontWeight: FontWeight.w400,
-                    color: ColorsConst.details),
-              ],
-            ),
-          ],
-        ),
-      ],
-    );
+    final list = [
+      ['assets/svg/perfomance/cpu.svg', details.cpu],
+      ['assets/svg/perfomance/camera.svg', details.camera],
+      ['assets/svg/perfomance/ssd.svg', details.ssd],
+      ['assets/svg/perfomance/sd.svg', details.sd]
+    ];
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: list
+            .map((e) => Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgIcon(
+                          color: ColorsConst.details,
+                          size: 28,
+                          icon: SvgIconData(e.first)),
+                    ),
+                    TextWS(
+                        text: e[1],
+                        width: width,
+                        size: 11,
+                        fontWeight: FontWeight.w400,
+                        color: ColorsConst.details),
+                  ],
+                ))
+            .toList());
   }
 }
