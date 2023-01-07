@@ -14,7 +14,7 @@ class CarouselWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final block = context.read<DetailsBloc>();
     final width = MediaQuery.of(context).size.width;
-    print('teg width $width');
+
 
     Widget itemBuilder(
         BuildContext context, DetailsBloc block, int index, int realIndex) {

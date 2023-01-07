@@ -12,6 +12,7 @@ class BottonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) => state is FilterState
             ? const SizedBox.shrink()
@@ -19,41 +20,41 @@ class BottonSheet extends StatelessWidget {
                 height: 72,
                 decoration: BoxDecoration(
                   color: ColorsConst.textColor,
-                  borderRadius: BorderRadius.circular(30.0),
+                  borderRadius: BorderRadius.circular(width * 0.06),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.08),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Row(
-                        children: const [
+                        children: [
                           SvgIcon(
                               color: Colors.white,
-                              size: 10,
-                              icon: SvgIconData('assets/svg/point.svg')),
-                          SizedBox(width: 8),
+                              size: width * 0.02,
+                              icon: const SvgIconData('assets/svg/point.svg')),
+                          SizedBox(width: width * 0.016),
                           Text(
                             'Explorer',
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 15,
+                                fontSize: width * 0.03,
                                 fontWeight: FontWeight.w700),
                           ),
                         ],
                       ),
-                      const SvgIcon(
+                       SvgIcon(
                           color: Colors.white,
-                          size: 20,
-                          icon: SvgIconData('assets/svg/wallet.svg')),
-                      const SvgIcon(
+                          size: width*0.04,
+                          icon: const SvgIconData('assets/svg/wallet.svg')),
+                       SvgIcon(
                           color: Colors.white,
-                          size: 20,
-                          icon: SvgIconData('assets/svg/favorit.svg')),
-                      const SvgIcon(
+                          size: width*0.04,
+                          icon: const SvgIconData('assets/svg/favorit.svg')),
+                       SvgIcon(
                           color: Colors.white,
-                          size: 20,
-                          icon: SvgIconData('assets/svg/person.svg'))
+                          size: width*0.04,
+                          icon: const SvgIconData('assets/svg/person.svg'))
                     ],
                   ),
                 ),

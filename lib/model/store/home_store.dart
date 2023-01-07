@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-class HomeStore {
-    HomeStore({
+import 'package:equatable/equatable.dart';
+
+class HomeStore extends Equatable{
+    const HomeStore({
         required this.id,
          this.isNew,
         required this.title,
@@ -52,4 +54,8 @@ class HomeStore {
       picture.hashCode ^
       isBuy.hashCode;
   }
+  
+  @override
+  // TODO: implement props
+  List<Object?> get props =>[id,isBuy,isNew,title,subtitle, picture];
 }

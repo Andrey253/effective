@@ -53,7 +53,6 @@ class TopCart extends StatelessWidget {
                     if (block.repository.cart.isNotEmpty)
                       CircleAvatar(
                           radius: width * 0.02,
-                          backgroundColor: Colors.red,
                           child: Text(
                             block.repository.weightCart,
                             style: const TextStyle(color: Colors.white),

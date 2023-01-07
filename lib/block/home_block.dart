@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/repository/repository.dart';
-import 'package:effective/repository/repository_implementation.dart';
 import 'package:effective/widgets/details/detais_home.dart';
 
 abstract class AppBlock<T> extends Cubit<T> {
@@ -92,8 +91,8 @@ class HomeBloc extends AppBlock<HomeState> {
   }
 
   void getStore() async {
-    await repository.getStore();
-    emit(const StartState());
+    final store =await repository.getStore();
+    emit(UpdateStoreState(store: store));
   }
 
   void navigateToDetails(

@@ -74,11 +74,5 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void init() async {
-    final e = await Dio().get(
-        'https://run.mocky.io/v3/654bd15e-b121-49ba-a588-960956b15175',
-        options: Options(responseType: ResponseType.json));
-    // print('teg ${}');
-    final f = Store.fromJson(e.data);
-  }
+
 }

@@ -5,6 +5,7 @@
 
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
@@ -15,8 +16,8 @@ Store sotoreFromJson(String str) => Store.fromJson(json.decode(str));
 
 String sotoreToJson(Store data) => json.encode(data.toJson());
 
-class Store {
-  Store({
+class Store extends Equatable{
+  const Store({
     required this.homeStore,
     required this.bestSeller,
   });
@@ -47,4 +48,7 @@ class Store {
 
   @override
   int get hashCode => homeStore.hashCode ^ bestSeller.hashCode;
+  
+  @override
+  List<Object?> get props => [homeStore,bestSeller];
 }

@@ -14,14 +14,13 @@ class BestSellerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final circular = 20.0;
     final width = MediaQuery.of(context).size.width;
     final block = context.read<HomeBloc>();
     return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) => state is FilterState
             ? const FilterWidget()
             : Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(width * 0.02),
                 child: GridView.count(
                   shrinkWrap: true,
                   primary: false,
@@ -29,21 +28,22 @@ class BestSellerWidget extends StatelessWidget {
                   childAspectRatio: 4 / 5,
                   children: block.repository.store.bestSeller
                       .map((e) => Padding(
-                            padding: const EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(width * 0.02),
                             child: Container(
                                 decoration: BoxDecoration(
                                   color: Colors.white,
-                                  borderRadius: BorderRadius.circular(circular),
-                                  boxShadow: const [
+                                  borderRadius:
+                                      BorderRadius.circular(width * 0.04),
+                                  boxShadow: [
                                     BoxShadow(
                                         color: ColorsConst.padding,
-                                        spreadRadius: 15),
+                                        spreadRadius: width * 0.03),
                                   ],
                                 ),
                                 child: Stack(
                                   children: [
                                     Padding(
-                                      padding: EdgeInsets.all(circular / 3),
+                                      padding: EdgeInsets.all(width * 0.013),
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -53,42 +53,43 @@ class BestSellerWidget extends StatelessWidget {
                                             height: width / 2.5,
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 18.0),
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: width * 0.036),
                                             child: Row(
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.end,
                                               children: [
                                                 Text(
                                                     '\$ ${e.priceWithoutDiscount.toString()}',
-                                                    style: const TextStyle(
+                                                    style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w700,
-                                                        fontSize: 16)),
-                                                const SizedBox(width: 8),
+                                                        fontSize:
+                                                            width * 0.032)),
+                                                SizedBox(width: width * 0.02),
                                                 Text(
                                                     '\$ ${e.discountPrice.toString()}',
-                                                    style: const TextStyle(
+                                                    style: TextStyle(
                                                         color: Colors.grey,
                                                         fontWeight:
                                                             FontWeight.w500,
-                                                        fontSize: 10,
+                                                        fontSize: width * 0.02,
                                                         decoration:
                                                             TextDecoration
                                                                 .lineThrough))
                                               ],
                                             ),
                                           ),
-                                          const SizedBox(height: 6),
+                                          SizedBox(height: width * 0.012),
                                           Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 18.0),
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: width * 0.036),
                                             child: Text(
                                               e.title,
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w400,
-                                                  fontSize: 10),
+                                                  fontSize: width * 0.02),
                                             ),
                                           )
                                         ],
@@ -97,14 +98,16 @@ class BestSellerWidget extends StatelessWidget {
                                     Container(
                                         alignment: Alignment.topRight,
                                         child: Padding(
-                                          padding: const EdgeInsets.all(18.0),
+                                          padding:
+                                              EdgeInsets.all(width * 0.036),
                                           child: Container(
-                                            height: 30,
-                                            width: 30,
+                                            height: width * 0.06,
+                                            width: width * 0.06,
                                             decoration: BoxDecoration(
                                               color: Colors.white,
                                               borderRadius:
-                                                  BorderRadius.circular(30.0),
+                                                  BorderRadius.circular(
+                                                      width * 0.06),
                                               boxShadow: [
                                                 BoxShadow(
                                                     color: Colors.black
@@ -117,7 +120,7 @@ class BestSellerWidget extends StatelessWidget {
                                                     ? Icons.favorite
                                                     : Icons.favorite_outline,
                                                 color: ColorsConst.red,
-                                                size: 18),
+                                                size: width * 0.036),
                                           ),
                                         ))
                                   ],

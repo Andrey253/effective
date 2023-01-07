@@ -31,7 +31,7 @@ abstract class Repository {
   Future<void> setListPrices();
   Future<void> setListBrand();
   Future<void> setListSizes();
-  Future<Store?> getStore();
+  Future<Store> getStore();
   Store store = Store(homeStore: [], bestSeller: []);
   void selectCategory(Category category) {
     listCategory = List.from(listCategory.map((e) => Category(

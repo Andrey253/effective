@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:effective/model/filter_params.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:effective/model/category.dart';
+import 'package:effective/model/filter_params.dart';
+import 'package:effective/model/store/store.dart';
+
 abstract class AppState extends Equatable {
   const AppState();
 }
@@ -10,11 +12,20 @@ abstract class AppState extends Equatable {
 abstract class HomeState extends AppState {
   const HomeState();
 }
+
 class StartState extends HomeState {
   const StartState();
 
   @override
   List<Object> get props => [];
+}
+
+class UpdateStoreState extends HomeState {
+  final Store store;
+  const UpdateStoreState({required this.store});
+
+  @override
+  List<Object> get props => [store];
 }
 
 class SelectCategoryState extends HomeState {

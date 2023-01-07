@@ -16,30 +16,29 @@ class HotSales extends StatelessWidget {
   Widget build(BuildContext context) {
     final block = context.read<HomeBloc>();
     final width = MediaQuery.of(context).size.width;
-    final f = width * 0.31;
-    final radiusNew = width * 0.032;
-    final circular = width * 0.024;
+    final height = width * 0.45;
     // print('teg $width');
     return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) => Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
-              child: Container(
-                height: 220,
+              padding: EdgeInsets.symmetric(
+                  horizontal: height * 0.06, vertical: height * 0.05),
+              child: SizedBox(
+                height: height,
                 child: PageView.builder(
                   itemBuilder: (context, index) => Stack(
                     children: [
                       Positioned(
                         left: 0,
                         top: 0,
-                        width: f + 1,
-                        height: 220,
+                        width: width * 0.31 + 1,
+                        height: height,
                         child: Container(
-                          width: 120,
+                          width: width * 0.31,
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(circular),
-                                bottomLeft: Radius.circular(circular)),
+                                topLeft: Radius.circular(width * 0.024),
+                                bottomLeft: Radius.circular(width * 0.024)),
                           ),
                           child: Padding(
                             padding: EdgeInsets.only(
@@ -50,11 +49,12 @@ class HotSales extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                if (block.repository.store.homeStore[index].isNew ==
+                                if (block.repository.store.homeStore[index]
+                                        .isNew ==
                                     true)
                                   CircleAvatar(
                                     backgroundColor: ColorsConst.red,
-                                    radius: radiusNew,
+                                    radius: width * 0.032,
                                     child: Text(
                                       'New',
                                       style: TextStyle(
@@ -66,7 +66,7 @@ class HotSales extends StatelessWidget {
                                   )
                                 else
                                   Container(
-                                    height: radiusNew * 2,
+                                    height: width * 0.064,
                                   ),
                                 Text(
                                   block.repository.store.homeStore[index].title,
@@ -77,7 +77,8 @@ class HotSales extends StatelessWidget {
                                       fontSize: width * 0.055),
                                 ),
                                 Text(
-                                  block.repository.store.homeStore[index].subtitle,
+                                  block.repository.store.homeStore[index]
+                                      .subtitle,
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white,
@@ -107,21 +108,21 @@ class HotSales extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        left: f,
+                        left: width * 0.31,
                         top: 0,
-                        width: width - 15 * 2 - f,
-                        height: 220,
+                        width: width - 15 * 2 - width * 0.31,
+                        height: height,
                         child: Container(
                           decoration: BoxDecoration(
                             color: Colors.black,
                             borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(circular),
-                                bottomRight: Radius.circular(circular)),
+                                topRight: Radius.circular(width * 0.024),
+                                bottomRight: Radius.circular(width * 0.024)),
                             image: DecorationImage(
                               alignment: Alignment.centerLeft,
                               fit: BoxFit.fitHeight,
-                              image: NetworkImage(
-                                  block.repository.store.homeStore[index].picture),
+                              image: NetworkImage(block
+                                  .repository.store.homeStore[index].picture),
                             ),
                           ),
                         ),

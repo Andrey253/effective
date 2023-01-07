@@ -15,9 +15,9 @@ class TopDetails extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final block = context.read<DetailsBloc>();
     return BlocBuilder<DetailsBloc, DetailsState>(
-        // buildWhen: (previous, current) => current is FilterState,
+        buildWhen: (previous, current) => current is UpdateCartState,
         builder: (context, state) => Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.symmetric(horizontal: width * 0.04),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

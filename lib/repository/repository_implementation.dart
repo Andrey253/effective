@@ -1,16 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:dio/dio.dart';
 import 'package:effective/help/showsearch_city.dart';
 import 'package:effective/model/json_store.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/repository/repository.dart';
+import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
 
 class RepositoryImplementation extends Repository {
   @override
   Future<void> setListCategory() async {
     await Future.delayed(const Duration(milliseconds: 2000));
-    listCategory =const [
+    listCategory = const [
       Category(name: 'Phone', asset: 'assets/svg/phone.svg', selected: true),
       Category(
           name: 'Computer', asset: 'assets/svg/computer.svg', selected: false),
@@ -74,9 +76,10 @@ class RepositoryImplementation extends Repository {
   }
 
   @override
-  Future<Store?> getStore() async {
-    await Future.delayed(const Duration(milliseconds: 700));
-    store = Store.fromJson(jsonStore);
+  Future<Store> getStore() async {
+    final query = await Dio()
+        .get(urlStore, options: Options(responseType: ResponseType.json));
+    store = Store.fromJson(query.data);
     return store;
   }
 }

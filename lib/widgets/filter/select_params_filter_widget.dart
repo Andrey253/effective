@@ -2,11 +2,12 @@ import 'package:effective/block/home_block.dart';
 import 'package:flutter/material.dart';
 
 class SelectParamsFilterWidget extends StatelessWidget {
-
   const SelectParamsFilterWidget({
-    Key? key, required this.items, required this.value,required this.onChanged,
+    Key? key,
+    required this.items,
+    required this.value,
+    required this.onChanged,
   }) : super(key: key);
-
 
   final List<String> items;
   final void Function(String?)? onChanged;
@@ -14,31 +15,29 @@ class SelectParamsFilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Padding(
-      padding:
-          const EdgeInsets.only(top: 10, bottom: 20, right: 10),
+      padding: EdgeInsets.only(
+          top: width * 0.02, bottom: width * 0.035, right: width * 0.02),
       child: InputDecorator(
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(gapPadding: 0),
-            contentPadding:
-                EdgeInsets.symmetric(horizontal: 15),
+          decoration: InputDecoration(
+            border: const OutlineInputBorder(gapPadding: 0),
+            contentPadding: EdgeInsets.symmetric(horizontal: width * 0.03),
           ),
           child: DropdownButton<String>(
               items: items
                   .map((e) => DropdownMenuItem(
                         value: e,
                         child: Text(e,
-                            style: const TextStyle(
+                            style: TextStyle(
                                 fontWeight: FontWeight.w400,
-                                fontSize: 18)),
+                                fontSize: width * 0.037)),
                       ))
                   .toList(),
               onChanged: onChanged,
               value: value,
               isExpanded: true,
-              underline: SizedBox.shrink())),
+              underline: const SizedBox.shrink())),
     );
   }
 }
-
-

@@ -17,14 +17,11 @@ class CategoryesWidget extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final radius = width * 0.075;
     final padding = radius / 2.5;
-    final heightText = 20;
-    if (block.repository.listCategory.isEmpty) {
-      print('teg listCat.isEmpty');
-    }
+
     return Container(
-      height: (radius + padding) * 2 + heightText,
+      height: (radius + padding) * 2 + width * 0.04,
       child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: width * 0.03),
           child: BlocBuilder<HomeBloc, HomeState>(
               builder: (context, state) => ListView(
                   scrollDirection: Axis.horizontal,
@@ -48,7 +45,7 @@ class CategoryesWidget extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                height: heightText.toDouble(),
+                                height: width * 0.04,
                                 child: Text(
                                   e.name,
                                   style: TextStyle(

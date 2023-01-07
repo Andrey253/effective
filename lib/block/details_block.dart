@@ -47,14 +47,10 @@ class DetailsBloc extends AppBlock<DetailsState> {
     repository.cart.add(repository.product);
     emit(UpdateCartState(cart: List.from(repository.cart)));
   }
-    void navigateToCart(
-      BuildContext context,  Repository repository) async {
+
+  void navigateToCart(BuildContext context, Repository repository) async {
     await Navigator.of(context).push(MaterialPageRoute(
-      builder: (context) => CartWidget(
-        repository: repository,
-    
-      ),
-    ));
-    // emit(GetingDetails(url: url));
+        builder: (context) => CartWidget(repository: repository)));
+    emit(UpdateCartState(cart: List.from(repository.cart)));
   }
 }

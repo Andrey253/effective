@@ -2,8 +2,8 @@
 
 import 'package:equatable/equatable.dart';
 
-class BestSeller {
-  BestSeller({
+class BestSeller extends Equatable{
+  const BestSeller({
     required this.id,
     required this.isFavorites,
     required this.title,
@@ -51,4 +51,8 @@ class BestSeller {
         discountPrice.hashCode ^
         picture.hashCode;
   }
+  
+  @override
+
+  List<Object?> get props => [id,isFavorites,title,priceWithoutDiscount,discountPrice,picture];
 }
