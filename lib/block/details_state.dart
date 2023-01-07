@@ -1,19 +1,14 @@
 import 'package:effective/model/cart/basket_model.dart';
-import 'package:effective/model/cart/cart_model.dart';
-import 'package:effective/model/details_model.dart';
-import 'package:effective/model/product_model.dart';
-import 'package:equatable/equatable.dart';
 
+import 'package:effective/model/details_model.dart';
+import 'package:equatable/equatable.dart';
 
 
 abstract class DetailsState extends Equatable {
   const DetailsState();
 }
-
 class GetingDetailsState extends DetailsState {
   const GetingDetailsState();
-  // final String url;
-
   @override
   List<Object> get props => [];
 }

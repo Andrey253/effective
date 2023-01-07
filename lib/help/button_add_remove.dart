@@ -1,6 +1,4 @@
 import 'package:effective/block/cart_block.dart';
-import 'package:effective/block/home_block.dart';
-import 'package:effective/model/product_model.dart';
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_icons/flutter_svg_icons.dart';

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:effective/model/cart/cart_model.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/model/details_model.dart';
@@ -7,10 +9,7 @@ import 'package:effective/model/store/store.dart';
 import 'package:flutter/material.dart';
 
 abstract class Repository {
-  List<Category> listCategory = [];
 
-  String city = '';
-  List<String> listCity = [];
   FilterParams filterParams = FilterParams(
       listBrands: [],
       listPrices: [],
@@ -19,31 +18,47 @@ abstract class Repository {
       price: '',
       size: '');
 
+  List<Category> listCategory = [];
+
+  String city = '';
+
+  List<String> listCity = [];
+
   late Details details;
+
   late Product product;
+
   CartModel? cart;
 
   String get weightCart;
 
   String get total;
 
-
-
-
-
   Future<void> setListCategory();
+
   Future<void> setListCity();
+
   Future<void> setListPrices();
+
   Future<void> setListBrand();
+
   Future<void> setListSizes();
+
   Future<Store> getStore();
+
+  Future<String> selectCity(BuildContext context);
+
+  Future<void> getDetails();
+
+  Future<void> getCart();
+
+  // ignore: prefer_const_constructors
   Store store = Store(homeStore: [], bestSeller: []);
+
   void selectCategory(Category category) {
     listCategory = List.from(listCategory.map((e) => Category(
         name: e.name, asset: e.asset, selected: category.name == e.name)));
   }
-
-  Future<String> selectCity(BuildContext context);
 
   void setBrend(String? value) {
     filterParams = filterParams.copyWith(brand: value);
@@ -77,7 +92,4 @@ abstract class Repository {
   void remove(int index) {
     cart?.basket?.removeAt(index);
   }
-
-  Future<void> getDetails();
-  Future<void> getCart();
 }

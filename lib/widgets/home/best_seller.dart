@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:effective/block/home_block.dart';
-import 'package:effective/block/state.dart';
-import 'package:effective/model/store/store.dart';
+import 'package:effective/block/home_state.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/widgets/filter/filter.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +13,11 @@ class BestSellerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final width = MediaQuery.of(context).size.width;
+
     final block = context.read<HomeBloc>();
+    
     return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) => state is FilterState
             ? const FilterWidget()

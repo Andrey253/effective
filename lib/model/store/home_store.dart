@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
 class HomeStore extends Equatable{
@@ -20,7 +19,7 @@ class HomeStore extends Equatable{
 
     factory HomeStore.fromJson(Map<String, dynamic> json) => HomeStore(
         id: json["id"],
-        isNew: json["is_new"] == null ? null : json["is_new"],
+        isNew: json["is_new"],
         title: json["title"],
         subtitle: json["subtitle"],
         picture: json["picture"],
@@ -29,7 +28,7 @@ class HomeStore extends Equatable{
 
     Map<String, dynamic> toJson() => {
         "id": id,
-        "is_new": isNew == null ? null : isNew,
+        "is_new": isNew,
         "title": title,
         "subtitle": subtitle,
         "picture": picture,
@@ -56,6 +55,5 @@ class HomeStore extends Equatable{
   }
   
   @override
-  // TODO: implement props
   List<Object?> get props =>[id,isBuy,isNew,title,subtitle, picture];
 }

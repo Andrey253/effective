@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class Basket extends Equatable{
-  Basket({
+  const Basket({
     required this.id,
     required this.images,
     required this.price,

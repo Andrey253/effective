@@ -12,8 +12,11 @@ class TopDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final width = MediaQuery.of(context).size.width;
+
     final block = context.read<DetailsBloc>();
+    
     return BlocBuilder<DetailsBloc, DetailsState>(
         buildWhen: (previous, current) => current is UpdateCartState|| current is GetingDetailsDoneState,
         builder: (context, state) => Padding(

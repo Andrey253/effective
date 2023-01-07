@@ -12,7 +12,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsHome extends StatelessWidget {
   const DetailsHome({super.key, required this.repository, required this.url});
+
   final Repository repository;
+  
   final String url;
 
   @override

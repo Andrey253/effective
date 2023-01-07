@@ -1,9 +1,8 @@
 import 'dart:async';
 
-import 'package:dio/dio.dart';
 import 'package:effective/block/home_block.dart';
-import 'package:effective/block/state.dart';
-import 'package:effective/model/store/store.dart';
+import 'package:effective/block/home_state.dart';
+
 import 'package:effective/repository/repository_implementation.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/widgets/flash/flash.dart';
@@ -19,8 +18,7 @@ import 'package:effective/widgets/line/select_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+void main() {
   runApp(const MyApp());
 }
 
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Home',
-        theme: ThemeData(fontFamily: MarkPro),
+        theme: ThemeData(fontFamily: markPro),
         home: BlocProvider<HomeBloc>(
           create: (_) => HomeBloc(
               repository: RepositoryImplementation(), type: const StartState()),
@@ -52,12 +50,10 @@ class _MyHomePageState extends State<MyHomePage> {
   bool splash = true;
   @override
   void initState() {
-
     Timer(
         const Duration(milliseconds: 5000),
         (() => setState(() {
               splash = false;
-
             })));
     super.initState();
   }
@@ -84,12 +80,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-            const BottonSheet()
+              const BottonSheet()
             ],
           ),
-          // This trailing comma makes auto-formatting nicer for build methods.
         ),
-       if (splash)    const Flash(),
+        if (splash) const Flash(),
       ]),
     );
   }

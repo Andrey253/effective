@@ -1,7 +1,5 @@
 import 'package:effective/model/details_model.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class FeatutrDetails extends StatelessWidget {
   const FeatutrDetails({super.key, required this.details});

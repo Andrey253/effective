@@ -17,7 +17,6 @@ class Perfomance extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final block = context.read<DetailsBloc>();
     return BlocBuilder<DetailsBloc, DetailsState>(
-        // buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => state is GetingDetailsState
             ? const SizedBox.shrink()
             : Padding(
@@ -66,10 +65,10 @@ class Perfomance extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: width * 0.06,bottom: width * 0.09),
+                        padding: EdgeInsets.only(
+                            left: width * 0.06, bottom: width * 0.09),
                         child: Stars(raiting: block.repository.details.rating),
                       ),
-             
                       PerfomanceBox(details: block.repository.details),
                       SizedBox(height: width * 0.07),
                       Padding(

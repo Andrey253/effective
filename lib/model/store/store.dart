@@ -7,8 +7,6 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
-
 import 'package:effective/model/store/best_seller.dart';
 import 'package:effective/model/store/home_store.dart';
 

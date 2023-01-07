@@ -1,4 +1,4 @@
-import 'package:effective/block/home_block.dart';
+
 import 'package:flutter/material.dart';
 
 class SelectParamsFilterWidget extends StatelessWidget {
@@ -10,12 +10,16 @@ class SelectParamsFilterWidget extends StatelessWidget {
   }) : super(key: key);
 
   final List<String> items;
+
   final void Function(String?)? onChanged;
+
   final String? value;
 
   @override
   Widget build(BuildContext context) {
+
     final width = MediaQuery.of(context).size.width;
+    
     return Padding(
       padding: EdgeInsets.only(
           top: width * 0.02, bottom: width * 0.035, right: width * 0.02),

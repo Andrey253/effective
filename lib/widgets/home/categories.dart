@@ -1,6 +1,6 @@
 import 'package:effective/block/home_block.dart';
-import 'package:effective/block/state.dart';
-import 'package:effective/model/category.dart';
+import 'package:effective/block/home_state.dart';
+
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,11 +14,14 @@ class CategoryesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final block = context.read<HomeBloc>();
+
     final width = MediaQuery.of(context).size.width;
+
     final radius = width * 0.075;
+
     final padding = radius / 2.5;
 
-    return Container(
+    return SizedBox(
       height: (radius + padding) * 2 + width * 0.04,
       child: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.03),

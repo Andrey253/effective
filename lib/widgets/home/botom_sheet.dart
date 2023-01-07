@@ -1,5 +1,5 @@
 import 'package:effective/block/home_block.dart';
-import 'package:effective/block/state.dart';
+import 'package:effective/block/home_state.dart';
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +13,7 @@ class BottonSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+
     return BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) => state is FilterState
             ? const SizedBox.shrink()
@@ -43,17 +44,17 @@ class BottonSheet extends StatelessWidget {
                           ),
                         ],
                       ),
-                       SvgIcon(
+                      SvgIcon(
                           color: Colors.white,
-                          size: width*0.04,
+                          size: width * 0.04,
                           icon: const SvgIconData('assets/svg/wallet.svg')),
-                       SvgIcon(
+                      SvgIcon(
                           color: Colors.white,
-                          size: width*0.04,
+                          size: width * 0.04,
                           icon: const SvgIconData('assets/svg/favorit.svg')),
-                       SvgIcon(
+                      SvgIcon(
                           color: Colors.white,
-                          size: width*0.04,
+                          size: width * 0.04,
                           icon: const SvgIconData('assets/svg/person.svg'))
                     ],
                   ),

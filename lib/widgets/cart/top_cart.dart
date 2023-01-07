@@ -1,13 +1,11 @@
 import 'package:effective/block/cart_block.dart';
 import 'package:effective/block/cart_state.dart';
-import 'package:effective/block/details_block.dart';
-import 'package:effective/block/details_state.dart';
 import 'package:effective/help/widgets.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/help/buttons_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg_icons/flutter_svg_icons.dart';
+
 
 class TopCart extends StatelessWidget {
   const TopCart({Key? key}) : super(key: key);
@@ -17,7 +15,6 @@ class TopCart extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final block = context.read<CartBlock>();
     return BlocBuilder<CartBlock, CartState>(
-        // buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(

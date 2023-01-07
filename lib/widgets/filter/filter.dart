@@ -1,14 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:effective/block/home_block.dart';
-import 'package:effective/block/state.dart';
+import 'package:effective/block/home_state.dart';
 import 'package:effective/help/widgets.dart';
 import 'package:effective/source/consts.dart';
 import 'package:effective/help/buttons_app.dart';
 import 'package:effective/widgets/filter/name_params_filtert.dart';
 import 'package:effective/widgets/filter/select_params_filter_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FilterWidget extends StatelessWidget {
@@ -16,9 +13,11 @@ class FilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final width = MediaQuery.of(context).size.width;
 
     final block = context.read<HomeBloc>();
+    
     return BlocBuilder<HomeBloc, HomeState>(
         buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => Padding(

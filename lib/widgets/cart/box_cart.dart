@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:effective/block/cart_block.dart';
 import 'package:effective/block/cart_state.dart';
-import 'package:effective/block/state.dart';
+
 import 'package:effective/help/button_add_remove.dart';
 import 'package:effective/help/buttons_app.dart';
 import 'package:effective/help/widgets.dart';
-import 'package:effective/model/product_model.dart';
+
 import 'package:effective/source/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,78 +30,81 @@ class BoxCart extends StatelessWidget {
             borderRadius:
                 BorderRadius.circular(MediaQuery.of(context).size.width * 0.06),
           ),
-          child: ListView(
-            children: [
-              SizedBox(height: width * 0.08),
-              ...listBasket,
-              Divider(height: 1, color: Colors.white),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: width * 0.08,
-                    top: width * 0.04,
-                    bottom: width * 0.04),
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: width * 0.65,
-                      child: Column(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: ListView(
+              children: [
+                SizedBox(height: width * 0.08),
+                ...listBasket,
+                const Divider(height: 1, color: Colors.white),
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: width * 0.08,
+                      top: width * 0.04,
+                      bottom: width * 0.04),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: width * 0.65,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextWS(
+                                text: 'Total',
+                                width: width,
+                                size: 15,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                            SizedBox(height: width * 0.02),
+                            TextWS(
+                                text: 'Delivery',
+                                width: width,
+                                size: 15,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white)
+                          ],
+                        ),
+                      ),
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           TextWS(
-                              text: 'Total',
+                              text: block.repository.total,
                               width: width,
                               size: 15,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w700,
                               color: Colors.white),
                           SizedBox(height: width * 0.02),
                           TextWS(
-                              text: 'Delivery',
+                              text: 'Free',
                               width: width,
                               size: 15,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w700,
                               color: Colors.white)
                         ],
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TextWS(
-                            text: block.repository.total,
-                            width: width,
-                            size: 15,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white),
-                        SizedBox(height: width * 0.02),
-                        TextWS(
-                            text: 'Free',
-                            width: width,
-                            size: 15,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white)
-                      ],
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Divider(height: 1, color: Colors.white),
-              SizedBox(height: width * 0.1),
-              Center(
-                child: ButtonsApp(
-                    width: width * 0.78,
-                    height: width * 0.13,
-                    circular: 10,
-                    backgroundColor: ColorsConst.red,
-                    onPressed: (() {}),
-                    child: TextWS(
-                        text: 'Checkout',
-                        width: width,
-                        size: 20,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white)),
-              ),
-              SizedBox(height: width * 0.1)
-            ],
+                const Divider(height: 1, color: Colors.white),
+                SizedBox(height: width * 0.1),
+                Center(
+                  child: ButtonsApp(
+                      width: width * 0.78,
+                      height: width * 0.13,
+                      circular: 10,
+                      backgroundColor: ColorsConst.red,
+                      onPressed: (() {}),
+                      child: TextWS(
+                          text: 'Checkout',
+                          width: width,
+                          size: 20,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white)),
+                ),
+                SizedBox(height: width * 0.1)
+              ],
+            ),
           ),
         );
       }),
@@ -142,8 +145,7 @@ class BoxCart extends StatelessWidget {
                       color: Colors.white),
                   const Spacer(),
                   TextWS(
-                      text:
-                          '\$ ${((block.repository.cart?.basket?[index]?.price ?? 0) * (block.repository.cart?.basket?[index]?.quantity ?? 0)).toStringAsFixed(2)}',
+                      text: block.totalPriceOneProduct(index),
                       width: width,
                       size: 20,
                       fontWeight: FontWeight.w500,
