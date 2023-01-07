@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:effective/block/home_block.dart';
 import 'package:effective/block/state.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/repository/repository_implementation.dart';
 import 'package:effective/source/consts.dart';
+import 'package:effective/widgets/flash/flash.dart';
 import 'package:effective/widgets/home/best_seller.dart';
 import 'package:effective/widgets/home/botom_sheet.dart';
 import 'package:effective/widgets/home/categories.dart';
@@ -16,7 +19,8 @@ import 'package:effective/widgets/line/select_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -45,34 +49,48 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 //flutter build apk --split-per-abi
+  bool splash = true;
+  @override
+  void initState() {
+
+    Timer(
+        const Duration(milliseconds: 5000),
+        (() => setState(() {
+              splash = false;
+
+            })));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: ColorsConst.backGround,
-        body: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                children: const <Widget>[
-                  FilterLine(),
-                  SelectCategoryLine(),
-                  CategoryesWidget(),
-                  SearchField(),
-                  HotSalesLine(),
-                  HotSales(),
-                  BestSellerLine(),
-                  BestSellerWidget(),
-                ],
+      child: Stack(children: [
+        Scaffold(
+          backgroundColor: ColorsConst.backGround,
+          body: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  children: const <Widget>[
+                    FilterLine(),
+                    SelectCategoryLine(),
+                    CategoryesWidget(),
+                    SearchField(),
+                    HotSalesLine(),
+                    HotSales(),
+                    BestSellerLine(),
+                    BestSellerWidget(),
+                  ],
+                ),
               ),
-            ),
             const BottonSheet()
-          ],
+            ],
+          ),
+          // This trailing comma makes auto-formatting nicer for build methods.
         ),
-        // This trailing comma makes auto-formatting nicer for build methods.
-      ),
+       if (splash)    const Flash(),
+      ]),
     );
   }
-
-
 }

@@ -119,8 +119,12 @@ class RepositoryImplementation extends Repository {
                     previousValue + (element!.price * element.quantity))
             : 0)
         .toString();
-    final subString = total.substring(total.length - 3, total.length);
-    final d = '\$' + total.replaceAll(subString, ',' + subString) + ' us';
-    return d;
+    if (total.length > 3) {
+      final subString = total.substring(total.length - 3, total.length);
+      final d = '\$' + total.replaceAll(subString, ',' + subString) + ' us';
+      return d;
+    }
+    return '\$' + total + ' us';
+    ;
   }
 }

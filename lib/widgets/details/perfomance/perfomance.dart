@@ -66,10 +66,10 @@ class Perfomance extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: width * 0.06),
+                        padding: EdgeInsets.only(left: width * 0.06,bottom: width * 0.09),
                         child: Stars(raiting: block.repository.details.rating),
                       ),
-                      SizedBox(height: width * 0.09),
+             
                       PerfomanceBox(details: block.repository.details),
                       SizedBox(height: width * 0.07),
                       Padding(

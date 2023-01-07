@@ -20,6 +20,7 @@ dependencies:
   cached_network_image: ^3.2.3
   carousel_slider: ^4.2.1
   flutter_rating_stars: ^1.0.3+4
+  
     #BLoC
   flutter_bloc: ^8.1.1
   equatable: ^2.0.3
