@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:effective/model/cart_model.dart';
+import 'package:effective/model/cart/basket_model.dart';
+import 'package:effective/model/cart/cart_model.dart';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {

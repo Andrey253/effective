@@ -115,7 +115,8 @@ class Perfomance extends StatelessWidget {
                                         size: 13,
                                         fontWeight: FontWeight.w700,
                                         color: e ==
-                                                block.repository.product.capacity
+                                                block
+                                                    .repository.product.capacity
                                             ? Colors.white
                                             : ColorsConst.capacity))),
                           ],
@@ -139,7 +140,7 @@ class Perfomance extends StatelessWidget {
                                     color: Colors.white),
                                 TextWS(
                                     text:
-                                        '\$ ${block.repository.details.price}',
+                                        '\$ ${block.repository.details.price.toStringAsFixed(2)}',
                                     width: width,
                                     size: 20,
                                     fontWeight: FontWeight.w700,

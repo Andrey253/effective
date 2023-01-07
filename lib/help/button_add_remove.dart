@@ -38,7 +38,9 @@ class ButtonAddRemove extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
               ),
-              Text((block.repository.cart?.basket?[index]?.quantity??0).toString(),
+              Text(
+                  (block.repository.cart?.basket?[index]?.quantity ?? 0)
+                      .toString(),
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: width * 20 / 414,
@@ -52,7 +54,7 @@ class ButtonAddRemove extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(width: width * 0.02),
+        SizedBox(width: width * 0.04),
         IconButton(
           icon: const SvgIcon(
               color: ColorsConst.deleteIcon,

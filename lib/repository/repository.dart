@@ -1,4 +1,4 @@
-import 'package:effective/model/cart_model.dart';
+import 'package:effective/model/cart/cart_model.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/model/details_model.dart';
 import 'package:effective/model/filter_params.dart';
@@ -23,11 +23,13 @@ abstract class Repository {
   late Product product;
   CartModel? cart;
 
-  String get weightCart => cart?.basket != null
-      ? cart!.basket!
-          .fold(0, (previousValue, element) => previousValue + (element!.quantity))
-          .toString()
-      : '0';
+  String get weightCart;
+
+  String get total;
+
+
+
+
 
   Future<void> setListCategory();
   Future<void> setListCity();

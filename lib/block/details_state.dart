@@ -1,4 +1,5 @@
-import 'package:effective/model/cart_model.dart';
+import 'package:effective/model/cart/basket_model.dart';
+import 'package:effective/model/cart/cart_model.dart';
 import 'package:effective/model/details_model.dart';
 import 'package:effective/model/product_model.dart';
 import 'package:equatable/equatable.dart';

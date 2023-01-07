@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
 import 'package:effective/help/showsearch_city.dart';
-import 'package:effective/model/cart_model.dart';
+import 'package:effective/model/cart/cart_model.dart';
 import 'package:effective/model/details_model.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/model/store/store.dart';
@@ -100,5 +100,27 @@ class RepositoryImplementation extends Repository {
         .get(urlCart, options: Options(responseType: ResponseType.json));
     final getingCart = CartModel.fromJson(request.data);
     cart = getingCart;
+  }
+
+  @override
+  String get weightCart => cart?.basket != null
+      ? cart!.basket!
+          .fold(0,
+              (previousValue, element) => previousValue + (element!.quantity))
+          .toString()
+      : '0';
+
+  @override
+  String get total {
+    final total = (cart?.basket != null
+            ? cart!.basket!.fold(
+                0,
+                (previousValue, element) =>
+                    previousValue + (element!.price * element.quantity))
+            : 0)
+        .toString();
+    final subString = total.substring(total.length - 3, total.length);
+    final d = '\$' + total.replaceAll(subString, ',' + subString) + ' us';
+    return d;
   }
 }
