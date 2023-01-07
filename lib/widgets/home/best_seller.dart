@@ -61,33 +61,31 @@ class BestSellerWidget extends StatelessWidget {
                                               children: [
                                                 Text(
                                                     '\$ ${e.priceWithoutDiscount.toString()}',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         fontWeight:
                                                             FontWeight.w700,
                                                         fontSize: 16)),
-                                                SizedBox(
-                                                  width: 8,
-                                                ),
+                                                const SizedBox(width: 8),
                                                 Text(
                                                     '\$ ${e.discountPrice.toString()}',
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color: Colors.grey,
                                                         fontWeight:
                                                             FontWeight.w500,
                                                         fontSize: 10,
                                                         decoration:
                                                             TextDecoration
-                                                                .lineThrough)),
+                                                                .lineThrough))
                                               ],
                                             ),
                                           ),
-                                          SizedBox(height: 6),
+                                          const SizedBox(height: 6),
                                           Padding(
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 18.0),
                                             child: Text(
                                               e.title,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w400,
                                                   fontSize: 10),
@@ -115,12 +113,11 @@ class BestSellerWidget extends StatelessWidget {
                                               ],
                                             ),
                                             child: Icon(
-                                              e.isFavorites
-                                                  ? Icons.favorite
-                                                  : Icons.favorite_outline,
-                                              color: ColorsConst.red,
-                                              size: 18,
-                                            ),
+                                                e.isFavorites
+                                                    ? Icons.favorite
+                                                    : Icons.favorite_outline,
+                                                color: ColorsConst.red,
+                                                size: 18),
                                           ),
                                         ))
                                   ],

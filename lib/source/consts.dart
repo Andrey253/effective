@@ -9,6 +9,9 @@ abstract class ColorsConst {
   static const details = Color(0xFFB7B7B7);
   static const star = Color(0xFFFFB800);
   static const capacity = Color(0xFF8D8D8D);
+  static const addRemoveBackground = Color(0xFF282843);
+  static const deleteIcon = Color(0xFF36364D);
+  // static const backBoxCart = Color(0xFF4C5F8F);
 }
 
 const urlDetails =

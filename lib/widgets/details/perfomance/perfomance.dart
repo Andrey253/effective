@@ -5,7 +5,7 @@ import 'package:effective/source/consts.dart';
 import 'package:effective/source/helper.dart';
 import 'package:effective/source/stars.dart';
 import 'package:effective/widgets/details/perfomance/tap_bar.dart';
-import 'package:effective/widgets/filter/buttons_app.dart';
+import 'package:effective/help/buttons_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

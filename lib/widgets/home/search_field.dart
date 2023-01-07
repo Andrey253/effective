@@ -55,7 +55,7 @@ class SearchField extends StatelessWidget {
                   child: SvgIcon(
                       color: Colors.white,
                       size: width * 0.05,
-                      icon: SvgIconData('assets/svg/search_param.svg'))),
+                      icon: const SvgIconData('assets/svg/search_param.svg'))),
             )
           ],
         ));
