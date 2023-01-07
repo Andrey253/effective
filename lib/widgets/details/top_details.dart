@@ -15,7 +15,7 @@ class TopDetails extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final block = context.read<DetailsBloc>();
     return BlocBuilder<DetailsBloc, DetailsState>(
-        buildWhen: (previous, current) => current is UpdateCartState,
+        buildWhen: (previous, current) => current is UpdateCartState|| current is GetingDetailsDoneState,
         builder: (context, state) => Padding(
               padding: EdgeInsets.symmetric(horizontal: width * 0.04),
               child: Row(
@@ -50,9 +50,10 @@ class TopDetails extends StatelessWidget {
                             color: Colors.white,
                             size: 20,
                             icon: SvgIconData('assets/svg/wallet.svg'))),
-                    if (block.repository.cart.isNotEmpty)
+                    if (block.repository.cart?.basket != null &&
+                        block.repository.cart!.basket!.isNotEmpty)
                       CircleAvatar(
-                          radius: width * 0.02,
+                          radius: width * 0.03,
                           child: Text(block.repository.weightCart))
                   ])
                 ],

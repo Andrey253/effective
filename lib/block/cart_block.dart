@@ -8,16 +8,16 @@ class CartBlock extends AppBlock<CartState> {
 
   decrement(int index) {
     repository.decrement(index);
-    emit(UpdateCartState(cart: List.from(repository.cart)));
+    emit(UpdateCartState(cart: List.from(repository.cart?.basket??[])));
   }
 
   increment(int index) {
     repository.increment(index);
-    emit(UpdateCartState(cart: List.from(repository.cart)));
+    emit(UpdateCartState(cart: List.from(repository.cart?.basket??[])));
   }
 
   remove(int index) {
         repository.remove(index);
-    emit(UpdateCartState(cart: List.from(repository.cart)));
+    emit(UpdateCartState(cart: List.from(repository.cart?.basket??[])));
   }
 }

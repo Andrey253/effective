@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:dio/dio.dart';
 import 'package:effective/help/showsearch_city.dart';
-import 'package:effective/model/json_store.dart';
+import 'package:effective/model/cart_model.dart';
+import 'package:effective/model/details_model.dart';
 import 'package:effective/model/category.dart';
 import 'package:effective/model/store/store.dart';
 import 'package:effective/repository/repository.dart';
@@ -81,5 +82,23 @@ class RepositoryImplementation extends Repository {
         .get(urlStore, options: Options(responseType: ResponseType.json));
     store = Store.fromJson(query.data);
     return store;
+  }
+
+  @override
+  Future<void> getDetails() async {
+    final request = await Dio()
+        .get(urlDetails, options: Options(responseType: ResponseType.json));
+    final getingDetails = Details.fromJson(request.data);
+    details = getingDetails;
+    product = details.getProduct;
+    await getCart();
+  }
+
+  @override
+  Future<void> getCart() async {
+    final request = await Dio()
+        .get(urlCart, options: Options(responseType: ResponseType.json));
+    final getingCart = CartModel.fromJson(request.data);
+    cart = getingCart;
   }
 }

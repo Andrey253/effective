@@ -115,8 +115,7 @@ class Perfomance extends StatelessWidget {
                                         size: 13,
                                         fontWeight: FontWeight.w700,
                                         color: e ==
-                                                block
-                                                    .repository.product.capacity
+                                                block.repository.product.capacity
                                             ? Colors.white
                                             : ColorsConst.capacity))),
                           ],

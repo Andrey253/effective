@@ -19,19 +19,22 @@ class BoxCart extends StatelessWidget {
     final block = context.read<CartBlock>();
     return Expanded(
       child: BlocBuilder<CartBlock, CartState>(
-          builder: (context, state) => Container(
+          builder: (context, state) {
+            return Container(
                 decoration: BoxDecoration(
                   color: ColorsConst.textColor,
                   borderRadius: BorderRadius.circular(
                       MediaQuery.of(context).size.width * 0.08),
                 ),
                 child: ListView.builder(
-                  itemCount: block.repository.cart.length,
-                  itemBuilder: (context, index) => block.repository.cart
+                  itemCount: block.repository.cart?.basket?.length,
+                  itemBuilder: (context, index) => block
+                      .repository.cart!.basket!
                       .map((e) => itemBuilder(index, block, context))
                       .toList()[index],
                 ),
-              )),
+              );
+          }),
     );
   }
 
@@ -40,7 +43,7 @@ class BoxCart extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(width * 0.06),
       child: Container(
-        constraints: BoxConstraints(maxHeight: width * 0.18),
+        constraints: BoxConstraints(maxHeight: width * 0.2),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -52,7 +55,7 @@ class BoxCart extends StatelessWidget {
                 borderRadius: BorderRadius.circular(width * 0.02),
               ),
               child: CachedNetworkImage(
-                imageUrl: block.repository.cart[index].image,
+                imageUrl: block.repository.cart?.basket?[index]?.images ?? '',
               ),
             ),
             SizedBox(width: width * 0.03),
@@ -60,7 +63,7 @@ class BoxCart extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextWS(
-                    text: block.repository.cart[index].title,
+                    text: block.repository.cart?.basket?[index]?.title ?? '',
                     width: width,
                     size: 20,
                     fontWeight: FontWeight.w500,
@@ -68,7 +71,7 @@ class BoxCart extends StatelessWidget {
                 const Spacer(),
                 TextWS(
                     text:
-                        '\$ ${block.repository.cart[index].price * block.repository.cart[index].quantity}',
+                        '\$ ${(block.repository.cart?.basket?[index]?.price ?? 0) * (block.repository.cart?.basket?[index]?.quantity ?? 0)}',
                     width: width,
                     size: 20,
                     fontWeight: FontWeight.w500,

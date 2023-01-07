@@ -50,9 +50,10 @@ class TopCart extends StatelessWidget {
                           color: Colors.white,
                           size: width * 0.05,
                         )),
-                    if (block.repository.cart.isNotEmpty)
+                    if (block.repository.cart?.basket != null &&
+                        block.repository.cart!.basket!.isNotEmpty)
                       CircleAvatar(
-                          radius: width * 0.02,
+                          radius: width * 0.03,
                           child: Text(
                             block.repository.weightCart,
                             style: const TextStyle(color: Colors.white),

@@ -22,15 +22,17 @@ class DetailsHome extends StatelessWidget {
             urlDetails: url,
             type: const GetingDetailsState(),
             repository: repository),
-        child: Scaffold(
-            appBar: AppBar(
-              title: const TopDetails(),
-              shadowColor: Colors.transparent,
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.transparent,
-            ),
-            backgroundColor: ColorsConst.backGround,
-            body: ListView(
-                children: const [CarouselWidget(), Perfomance(), Loading()])));
+        child: SafeArea(
+          child: Scaffold(
+              appBar: AppBar(
+                title: const TopDetails(),
+                shadowColor: Colors.transparent,
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.transparent,
+              ),
+              backgroundColor: ColorsConst.backGround,
+              body: ListView(
+                  children: const [CarouselWidget(), Perfomance(), Loading()])),
+        ));
   }
 }

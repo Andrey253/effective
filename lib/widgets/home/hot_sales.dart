@@ -60,7 +60,7 @@ class HotSales extends StatelessWidget {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w700,
                                           color: Colors.white,
-                                          fontFamily: 'SFPRODISPLAYREGULAR',
+                                          fontFamily: SFPRO,
                                           fontSize: width * 0.022),
                                     ),
                                   )
@@ -73,7 +73,7 @@ class HotSales extends StatelessWidget {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w700,
                                       color: Colors.white,
-                                      fontFamily: 'SFPRODISPLAYREGULAR',
+                                      fontFamily: SFPRO,
                                       fontSize: width * 0.055),
                                 ),
                                 Text(
@@ -82,7 +82,7 @@ class HotSales extends StatelessWidget {
                                   style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       color: Colors.white,
-                                      fontFamily: 'SFPRODISPLAYREGULAR',
+                                      fontFamily: SFPRO,
                                       fontSize: width * 0.024),
                                 ),
                                 ElevatedButton(
@@ -99,7 +99,7 @@ class HotSales extends StatelessWidget {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w700,
                                           color: Colors.black,
-                                          fontFamily: 'SFPRODISPLAYREGULAR',
+                                          fontFamily: SFPRO,
                                           fontSize: width * 0.024),
                                     ))
                               ],

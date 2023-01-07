@@ -23,11 +23,11 @@ class ButtonAddRemove extends StatelessWidget {
       children: [
         Container(
           alignment: Alignment.center,
-          height: width * 0.2,
-          width: width * 0.06,
+          height: width * 0.28,
+          width: width * 0.08,
           decoration: BoxDecoration(
             color: ColorsConst.addRemoveBackground,
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(width * 0.04),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -38,7 +38,7 @@ class ButtonAddRemove extends StatelessWidget {
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
               ),
-              Text(block.repository.cart[index].quantity.toString(),
+              Text((block.repository.cart?.basket?[index]?.quantity??0).toString(),
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
                       fontSize: width * 20 / 414,

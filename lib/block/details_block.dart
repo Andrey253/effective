@@ -22,12 +22,8 @@ class DetailsBloc extends AppBlock<DetailsState> {
 
   void init() async {
     try {
-      final request = await Dio()
-          .get(urlDetails, options: Options(responseType: ResponseType.json));
-      final details = Details.fromJson(request.data);
-      repository.details = details;
-      repository.product = details.getProduct;
-      emit(GetingDetailsDoneState(details: details));
+      await repository.getDetails();
+      emit(GetingDetailsDoneState(details: repository.details));
     } on Exception catch (e) {
       emit(ErrorDetailsState(error: e.toString()));
     }
@@ -44,13 +40,14 @@ class DetailsBloc extends AppBlock<DetailsState> {
   }
 
   void addToCart() {
-    repository.cart.add(repository.product);
-    emit(UpdateCartState(cart: List.from(repository.cart)));
+    final basket = repository.product.getBasket;
+    repository.cart?.basket?.add(basket);
+    emit(UpdateCartState(cart: List.from(repository.cart?.basket ?? [])));
   }
 
   void navigateToCart(BuildContext context, Repository repository) async {
     await Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => CartWidget(repository: repository)));
-    emit(UpdateCartState(cart: List.from(repository.cart)));
+    emit(UpdateCartState(cart: List.from(repository.cart?.basket ?? [])));
   }
 }

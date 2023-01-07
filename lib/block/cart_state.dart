@@ -1,3 +1,4 @@
+import 'package:effective/model/cart_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:effective/model/product_model.dart';
 
@@ -14,7 +15,7 @@ class InitCartState extends CartState {
 }
 class UpdateCartState extends CartState {
 
-   final List<Product> cart;
+   final List<Basket> cart;
   const UpdateCartState({
     required this.cart,
   });
