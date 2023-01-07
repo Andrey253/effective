@@ -24,8 +24,8 @@ class SearchField extends StatelessWidget {
 
   Container icon(double width) {
     return Container(
-        height: width * 0.09,
-        width: width * 0.09,
+        height: width * 0.12,
+        width: width * 0.12,
         decoration: const BoxDecoration(
           boxShadow: [
             BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 2)
@@ -44,15 +44,16 @@ class SearchField extends StatelessWidget {
   Expanded searchField(double width) {
     return Expanded(
       child: Container(
+        alignment: Alignment.center,
         margin: EdgeInsets.all(width * 0.027),
-        height: width * 0.09,
+        height: width * 0.12,
         decoration: BoxDecoration(
             boxShadow: const [
               BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 2)
             ],
             color: Colors.white,
             border: Border.all(color: Colors.red),
-            borderRadius: BorderRadius.all(Radius.circular(width / 20))),
+            borderRadius: BorderRadius.all(Radius.circular(width * 0.06))),
         child: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: TextField(
