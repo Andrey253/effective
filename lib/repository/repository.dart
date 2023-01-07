@@ -22,6 +22,10 @@ abstract class Repository {
   late Product product;
   List<Product> cart = [];
 
+  String get weightCart => cart
+      .fold(0, (previousValue, element) => previousValue + element.quantity)
+      .toString();
+
   Future<void> setListCategory();
   Future<void> setListCity();
   Future<void> setListPrices();
@@ -46,5 +50,26 @@ abstract class Repository {
 
   void setSize(String? value) {
     filterParams = filterParams.copyWith(size: value);
+  }
+
+  void decrement(int index) {
+    final deletedProduct = cart.removeAt(index);
+    if (deletedProduct.quantity == 1) {
+      return;
+    }
+    final product =
+        deletedProduct.copyWith(quantity: deletedProduct.quantity - 1);
+    cart.insert(index, product);
+  }
+
+  void increment(int index) {
+    final deletedProduct = cart.removeAt(index);
+    final product =
+        deletedProduct.copyWith(quantity: deletedProduct.quantity + 1);
+    cart.insert(index, product);
+  }
+
+  void remove(int index) {
+    cart.removeAt(index);
   }
 }

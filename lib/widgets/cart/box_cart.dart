@@ -19,63 +19,67 @@ class BoxCart extends StatelessWidget {
     final block = context.read<CartBlock>();
     return Expanded(
       child: BlocBuilder<CartBlock, CartState>(
-          builder: (context, state) => state is FilterState
-              ? const SizedBox.shrink()
-              : Container(
-                  decoration: BoxDecoration(
-                    color: ColorsConst.textColor,
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  child: ListView(children: [
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    ...block.repository.cart
-                        .map((e) => itemBuilder(e, block))
-                        .toList(),
-                  ]),
-                )),
+          builder: (context, state) => Container(
+                decoration: BoxDecoration(
+                  color: ColorsConst.textColor,
+                  borderRadius: BorderRadius.circular(
+                      MediaQuery.of(context).size.width * 0.08),
+                ),
+                child: ListView.builder(
+                  itemCount: block.repository.cart.length,
+                  itemBuilder: (context, index) => block.repository.cart
+                      .map((e) => itemBuilder(index, block, context))
+                      .toList()[index],
+                ),
+              )),
     );
   }
 
-  Widget itemBuilder(Product product, CartBlock block) => Padding(
-        padding: const EdgeInsets.all(30.0),
+  Widget itemBuilder(int index, CartBlock block, BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    return Padding(
+      padding: EdgeInsets.all(width * 0.06),
+      child: Container(
+        constraints: BoxConstraints(maxHeight: width * 0.18),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               alignment: Alignment.centerLeft,
-              constraints: const BoxConstraints(maxHeight: 90, maxWidth: 90),
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
                 color: ColorsConst.backGround,
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(width * 0.02),
               ),
               child: CachedNetworkImage(
-                imageUrl: product.image,
+                imageUrl: block.repository.cart[index].image,
               ),
             ),
-            const SizedBox(width: 12),
+            SizedBox(width: width * 0.03),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextWS(
-                    text: product.title,
-                    width: 414,
+                    text: block.repository.cart[index].title,
+                    width: width,
                     size: 20,
                     fontWeight: FontWeight.w500,
                     color: Colors.white),
+                const Spacer(),
                 TextWS(
-                    text: '\$ ${product.price * product.quantity}',
-                    width: 414,
+                    text:
+                        '\$ ${block.repository.cart[index].price * block.repository.cart[index].quantity}',
+                    width: width,
                     size: 20,
                     fontWeight: FontWeight.w500,
                     color: ColorsConst.red)
               ],
             ),
             const Spacer(),
-            ButtonAddRemove(block: block, product: product)
+            ButtonAddRemove(block: block, index: index, width: width)
           ],
         ),
-      );
+      ),
+    );
+  }
 }

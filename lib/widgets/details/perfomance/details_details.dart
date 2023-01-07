@@ -8,6 +8,6 @@ class DetailsDetails extends StatelessWidget {
   final Details details;
   @override
   Widget build(BuildContext context) {
-    return Container(child: Text(this.runtimeType.toString()));
+    return SizedBox(height: 65, child: Text(runtimeType.toString()));
   }
 }

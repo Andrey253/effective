@@ -19,16 +19,17 @@ class TopCart extends StatelessWidget {
     return BlocBuilder<CartBlock, CartState>(
         // buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ButtonsApp(
                       width: width * 0.09,
                       height: width * 0.09,
-                      circular: 10,
+                      circular: width * 0.02,
                       backgroundColor: ColorsConst.textColor,
-                      child: const Icon(Icons.keyboard_arrow_left, size: 35),
+                      child:
+                          Icon(Icons.keyboard_arrow_left, size: width * 0.08),
                       onPressed: () => Navigator.of(context).pop()),
                   TextWS(
                     text: 'Add address',
@@ -41,18 +42,22 @@ class TopCart extends StatelessWidget {
                     ButtonsApp(
                         width: width * 0.09,
                         height: width * 0.09,
-                        circular: 10,
+                        circular: width * 0.02,
                         backgroundColor: ColorsConst.red,
                         onPressed: () {},
-                        child: const Icon(
+                        child: Icon(
                           Icons.place_outlined,
                           color: Colors.white,
-                          size: 25,
+                          size: width * 0.05,
                         )),
                     if (block.repository.cart.isNotEmpty)
                       CircleAvatar(
-                          radius: 10,
-                          child: Text(block.repository.cart.length.toString()))
+                          radius: width * 0.02,
+                          backgroundColor: Colors.red,
+                          child: Text(
+                            block.repository.weightCart,
+                            style: const TextStyle(color: Colors.white),
+                          ))
                   ])
                 ],
               ),

@@ -9,11 +9,13 @@ class ButtonAddRemove extends StatelessWidget {
   const ButtonAddRemove({
     Key? key,
     required this.block,
-    required this.product,
+    required this.index,
+    required this.width,
   }) : super(key: key);
 
   final CartBlock block;
-  final Product product;
+  final int index;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +23,8 @@ class ButtonAddRemove extends StatelessWidget {
       children: [
         Container(
           alignment: Alignment.center,
-          height: 80,
-          width: 26,
+          height: width * 0.2,
+          width: width * 0.06,
           decoration: BoxDecoration(
             color: ColorsConst.addRemoveBackground,
             borderRadius: BorderRadius.circular(15),
@@ -30,22 +32,35 @@ class ButtonAddRemove extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.remove, color: Colors.white),
-              Text(product.quantity.toString(),
+              IconButton(
+                icon: const Icon(Icons.remove, color: Colors.white),
+                onPressed: () => block.decrement(index),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+              ),
+              Text(block.repository.cart[index].quantity.toString(),
                   style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 20,
+                      fontSize: width * 20 / 414,
                       color: Colors.white)),
-              Icon(Icons.add, color: Colors.white)
+              IconButton(
+                icon: const Icon(Icons.add, color: Colors.white),
+                onPressed: () => block.increment(index),
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(),
+              ),
             ],
           ),
         ),
-        SizedBox(
-          width: 20,
-        ),
-        SvgIcon(
-            color: ColorsConst.deleteIcon,
-            icon: const SvgIconData('assets/svg/cart/delete.svg'))
+        SizedBox(width: width * 0.02),
+        IconButton(
+          icon: const SvgIcon(
+              color: ColorsConst.deleteIcon,
+              icon: SvgIconData('assets/svg/cart/delete.svg')),
+          onPressed: () => block.remove(index),
+          padding: EdgeInsets.zero,
+          constraints: const BoxConstraints(),
+        )
       ],
     );
   }

@@ -15,32 +15,31 @@ class Perfomance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final circular = width * 0.08;
     final block = context.read<DetailsBloc>();
     return BlocBuilder<DetailsBloc, DetailsState>(
         // buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => state is GetingDetailsState
             ? const SizedBox.shrink()
             : Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: EdgeInsets.only(top: width * 0.03),
                 child: Container(
-                  // height: width,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(circular),
-                    boxShadow: const [
+                    borderRadius: BorderRadius.circular(width * 0.08),
+                    boxShadow: [
                       BoxShadow(
                           color: Colors.black12,
-                          blurRadius: 10,
-                          offset: Offset(0, -10))
+                          blurRadius: width * 0.03,
+                          offset: Offset(0, -width * 0.03))
                     ],
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 33),
+                      SizedBox(height: width * 0.1),
                       Padding(
-                        padding: const EdgeInsets.only(left: 44, right: 40),
+                        padding: EdgeInsets.only(
+                            left: width * 0.08, right: width * 0.07),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -54,7 +53,7 @@ class Perfomance extends StatelessWidget {
                             ButtonsApp(
                                 width: width * 0.09,
                                 height: width * 0.09,
-                                circular: 10,
+                                circular: width * 0.02,
                                 backgroundColor: ColorsConst.textColor,
                                 onPressed: () {},
                                 child: block.repository.details.isFavorites
@@ -67,14 +66,14 @@ class Perfomance extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 30, right: 40),
+                        padding: EdgeInsets.only(left: width * 0.06),
                         child: Stars(raiting: block.repository.details.rating),
                       ),
-                      const SizedBox(height: 45),
+                      SizedBox(height: width * 0.09),
                       PerfomanceBox(details: block.repository.details),
-                      const SizedBox(height: 35),
+                      SizedBox(height: width * 0.07),
                       Padding(
-                        padding: const EdgeInsets.only(left: 40, right: 40),
+                        padding: EdgeInsets.only(left: width * 0.08),
                         child: TextWS(
                             text: 'Select color end capacity',
                             width: width,
@@ -83,8 +82,8 @@ class Perfomance extends StatelessWidget {
                             color: ColorsConst.textColor),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 40),
+                        padding: EdgeInsets.symmetric(
+                            vertical: width * 0.02, horizontal: width * 0.09),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -93,28 +92,33 @@ class Perfomance extends StatelessWidget {
                                       onTap: () => block.setColor(e),
                                       child: CircleAvatar(
                                         backgroundColor: colorFromHex(e),
-                                        child: e == block.repository.product.color
-                                            ? const Icon(Icons.done)
-                                            : null,
+                                        child:
+                                            e == block.repository.product.color
+                                                ? const Icon(Icons.done)
+                                                : null,
                                       ),
                                     )),
-                            const SizedBox(width: 40),
-                            ...block.repository.details.capacity.map((e) => ButtonsApp(
-                                width: width * 0.17,
-                                height: width * 0.07,
-                                circular: 12,
-                                backgroundColor: e == block.repository.product.capacity
-                                    ? ColorsConst.red
-                                    : Colors.white,
-                                onPressed: (() => block.setCapacity(e)),
-                                child: TextWS(
-                                    text: e,
-                                    width: width,
-                                    size: 13,
-                                    fontWeight: FontWeight.w700,
-                                    color: e == block.repository.product.capacity
-                                        ? Colors.white
-                                        : ColorsConst.capacity))),
+                            SizedBox(width: width * 0.08),
+                            ...block.repository.details.capacity.map((e) =>
+                                ButtonsApp(
+                                    width: width * 0.17,
+                                    height: width * 0.07,
+                                    circular: width * 0.022,
+                                    backgroundColor:
+                                        e == block.repository.product.capacity
+                                            ? ColorsConst.red
+                                            : Colors.white,
+                                    onPressed: (() => block.setCapacity(e)),
+                                    child: TextWS(
+                                        text: e,
+                                        width: width,
+                                        size: 13,
+                                        fontWeight: FontWeight.w700,
+                                        color: e ==
+                                                block
+                                                    .repository.product.capacity
+                                            ? Colors.white
+                                            : ColorsConst.capacity))),
                           ],
                         ),
                       ),
@@ -135,7 +139,8 @@ class Perfomance extends StatelessWidget {
                                     fontWeight: FontWeight.w700,
                                     color: Colors.white),
                                 TextWS(
-                                    text: '\$ ${block.repository.details.price}',
+                                    text:
+                                        '\$ ${block.repository.details.price}',
                                     width: width,
                                     size: 20,
                                     fontWeight: FontWeight.w700,
@@ -143,7 +148,7 @@ class Perfomance extends StatelessWidget {
                               ],
                             )),
                       ),
-                      SizedBox(height: 40)
+                      SizedBox(height: width * 0.08)
                     ],
                   ),
                 ),

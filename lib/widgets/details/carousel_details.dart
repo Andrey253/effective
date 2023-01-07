@@ -13,6 +13,34 @@ class CarouselWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final block = context.read<DetailsBloc>();
+    final width = MediaQuery.of(context).size.width;
+    print('teg width $width');
+
+    Widget itemBuilder(
+        BuildContext context, DetailsBloc block, int index, int realIndex) {
+      return Padding(
+        padding: EdgeInsets.all(width * 0.02),
+        child: Container(
+          decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                    spreadRadius: width * 0.01,
+                    blurRadius: width * 0.02,
+                    color: ColorsConst.grey)
+              ],
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(width * 0.03))),
+          child: Padding(
+            padding: EdgeInsets.all(width * 0.02),
+            child: CachedNetworkImage(
+              imageUrl: block.repository.details.images[index],
+              fit: BoxFit.fitWidth,
+            ),
+          ),
+        ),
+      );
+    }
+
     return BlocBuilder<DetailsBloc, DetailsState>(
         buildWhen: (previous, current) => current is GetingDetailsDoneState,
         builder: (context, state) => state is GetingDetailsState
@@ -25,33 +53,10 @@ class CarouselWidget extends StatelessWidget {
                   enlargeFactor: 0.4,
                   aspectRatio: 6 / 39,
                   viewportFraction: 0.6,
-                  height: 400,
+                  height: width * 0.8,
                   // pageSnapping: false,
                   enlargeCenterPage: true,
                   enlargeStrategy: CenterPageEnlargeStrategy.height,
                 )));
-  }
-
-  Widget itemBuilder(
-      BuildContext context, DetailsBloc block, int index, int realIndex) {
-    return Padding(
-      padding: const EdgeInsets.all(13.0),
-      child: Container(
-        decoration: const BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                  spreadRadius: 6, blurRadius: 12, color: ColorsConst.grey)
-            ],
-            color: Colors.white,
-            borderRadius: BorderRadius.all(Radius.circular(15))),
-        child: Padding(
-          padding: const EdgeInsets.all(13.0),
-          child: CachedNetworkImage(
-            imageUrl: block.repository.details.images[index],
-            fit: BoxFit.fitWidth,
-          ),
-        ),
-      ),
-    );
   }
 }

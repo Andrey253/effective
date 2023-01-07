@@ -7,12 +7,11 @@ class Stars extends StatelessWidget {
   final double raiting;
   @override
   Widget build(BuildContext context) {
-    print('teg $raiting');
     return RatingStars(
         value: raiting,
         starBuilder: (index, color) => Icon(Icons.star, color: color),
         starCount: 5,
-        starSize: 20,
+        starSize: MediaQuery.of(context).size.width * 0.05,
         maxValue: 5,
         starSpacing: 20,
         valueLabelVisibility: false,

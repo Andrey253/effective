@@ -17,16 +17,19 @@ class TopDetails extends StatelessWidget {
     return BlocBuilder<DetailsBloc, DetailsState>(
         // buildWhen: (previous, current) => current is FilterState,
         builder: (context, state) => Padding(
-              padding: EdgeInsets.all(width * 0.0),
+              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ButtonsApp(
                       width: width * 0.09,
                       height: width * 0.09,
-                      circular: 10,
+                      circular: width * 0.02,
                       backgroundColor: ColorsConst.textColor,
-                      child: const Icon(Icons.keyboard_arrow_left, size: 35),
+                      child: Icon(
+                        Icons.keyboard_arrow_left,
+                        size: width * 0.08,
+                      ),
                       onPressed: () => Navigator.of(context).pop()),
                   TextWS(
                     text: 'Product Details',
@@ -39,17 +42,18 @@ class TopDetails extends StatelessWidget {
                     ButtonsApp(
                         width: width * 0.09,
                         height: width * 0.09,
-                        circular: 10,
+                        circular: width * 0.02,
                         backgroundColor: ColorsConst.red,
-                        onPressed:() =>  block.navigateToCart(context, block. repository),
+                        onPressed: () =>
+                            block.navigateToCart(context, block.repository),
                         child: const SvgIcon(
                             color: Colors.white,
                             size: 20,
                             icon: SvgIconData('assets/svg/wallet.svg'))),
                     if (block.repository.cart.isNotEmpty)
                       CircleAvatar(
-                          radius: 10,
-                          child: Text(block.repository.cart.length.toString()))
+                          radius: width * 0.02,
+                          child: Text(block.repository.weightCart))
                   ])
                 ],
               ),

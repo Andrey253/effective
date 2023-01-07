@@ -38,7 +38,7 @@ class _PerfomanceBoxState extends State<PerfomanceBox> {
     final width = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.only(left: 33, right: 35),
+      padding: EdgeInsets.only(left: width * 0.08, right: width * 0.07),
       child: Column(
         children: [
           Row(
@@ -64,8 +64,8 @@ class _PerfomanceBoxState extends State<PerfomanceBox> {
                           ),
                         ),
                         Container(
-                            height: 3,
-                            width: 99,
+                            height: width * 0.008,
+                            width: width * 0.22,
                             color: selected == e
                                 ? ColorsConst.red
                                 : Colors.transparent)
@@ -73,7 +73,7 @@ class _PerfomanceBoxState extends State<PerfomanceBox> {
                     ),
                   )
                   .toList()),
-          SizedBox(height: 30),
+          SizedBox(height: width * 0.06),
           widgets[selected]!
         ],
       ),

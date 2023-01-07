@@ -21,6 +21,7 @@ class CartWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return BlocProvider<CartBlock>(
         create: (_) =>
             CartBlock(type: const InitCartState(), repository: repository),
@@ -32,19 +33,19 @@ class CartWidget extends StatelessWidget {
               backgroundColor: Colors.transparent,
             ),
             backgroundColor: ColorsConst.backGround,
-            body: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 50),
-                    child: TextWS(
-                        text: 'My Cart',
-                        width: 414,
-                        size: 35,
-                        fontWeight: FontWeight.w700,
-                        color: ColorsConst.textColor),
-                  ),
-                  BoxCart()
-                ])));
+            body:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: width * 0.08, vertical: width * 0.1),
+                child: TextWS(
+                    text: 'My Cart',
+                    width: width,
+                    size: 35,
+                    fontWeight: FontWeight.w700,
+                    color: ColorsConst.textColor),
+              ),
+              BoxCart()
+            ])));
   }
 }
