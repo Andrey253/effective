@@ -50,7 +50,6 @@ class CarouselWidget extends StatelessWidget {
                   aspectRatio: 6 / 39,
                   viewportFraction: 0.6,
                   height: width * 0.8,
-                  // pageSnapping: false,
                   enlargeCenterPage: true,
                   enlargeStrategy: CenterPageEnlargeStrategy.height,
                 )));

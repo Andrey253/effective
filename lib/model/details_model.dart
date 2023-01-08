@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:effective/model/product_model.dart';
+import 'package:effective/model/store/best_seller.dart';
 import 'package:equatable/equatable.dart';
 
 Details detailsFromJson(String str) => Details.fromJson(json.decode(str));
@@ -21,20 +22,8 @@ class Details extends Equatable {
   });
 
   @override
-  List<Object?> get props => [
-        cpu,
-        camera,
-        capacity,
-        color,
-        id,
-        images,
-        isFavorites,
-        price,
-        rating,
-        sd,
-        ssd,
-        title
-      ];
+  List<Object?> get props =>
+      [cpu, camera, capacity, color, id, images, isFavorites, price, rating, sd, ssd, title];
   final String cpu;
   final String camera;
   final List<String> capacity;
@@ -54,7 +43,7 @@ class Details extends Equatable {
         capacity: List<String>.from(json["capacity"].map((x) => x)),
         color: List<String>.from(json["color"].map((x) => x)),
         id: json["id"],
-        images: List<String>.from(json["images"].map((x) => x)),
+        images: List<String>.from(json["images"].map((x) => x))..addAll([urlReplace1]),
         isFavorites: json["isFavorites"],
         price: json["price"],
         rating: json["rating"].toDouble(),

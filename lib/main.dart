@@ -31,8 +31,7 @@ class MyApp extends StatelessWidget {
         title: 'Home',
         theme: ThemeData(fontFamily: markPro),
         home: BlocProvider<HomeBloc>(
-          create: (_) => HomeBloc(
-              repository: RepositoryImplementation(), type: const StartState()),
+          create: (_) => HomeBloc(repository: RepositoryImplementation(), type: const StartState()),
           child: const MyHomePage(),
         ));
   }
@@ -50,13 +49,13 @@ class _MyHomePageState extends State<MyHomePage> {
   bool splash = true;
   @override
   void initState() {
-    Timer(const Duration(milliseconds: 000),
-        (() => setState(() => splash = false)));
+    Timer(const Duration(milliseconds: 5000), (() => setState(() => splash = false)));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+
     return SafeArea(
       child: Stack(children: [
         Scaffold(
@@ -81,7 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-        if (splash) const Flash(),
+          Flash(splash: splash),
+        
       ]),
     );
   }

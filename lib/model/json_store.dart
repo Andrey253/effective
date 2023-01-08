@@ -64,3 +64,4 @@ const jsonStore = {
     }
   ]
 };
+// https://www.cactus.md/i.ashx?i=/i/products/21/107355.jpg&w=680&h=500

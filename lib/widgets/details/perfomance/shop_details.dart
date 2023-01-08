@@ -23,10 +23,7 @@ class ShopDetails extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SvgIcon(
-                          color: ColorsConst.details,
-                          size: 28,
-                          icon: SvgIconData(e.first)),
+                      child: SvgIcon(color: ColorsConst.details, size: 28, icon: SvgIconData(e[0])),
                     ),
                     TextWS(
                         text: e[1],

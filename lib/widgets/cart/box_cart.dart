@@ -127,7 +127,11 @@ class BoxCart extends StatelessWidget {
                 color: ColorsConst.backGround,
                 borderRadius: BorderRadius.circular(width * 0.02),
               ),
-              child: CachedNetworkImage(
+              child: CachedNetworkImage(      progressIndicatorBuilder: ((context, url, progress) => Center(
+                    child: SizedBox(
+                        height: 20,
+                        width: 20,
+                        child: CircularProgressIndicator(value: progress.progress)))),
                 imageUrl: block.repository.cart?.basket?[index]?.images ?? '',
                 fit: BoxFit.cover,
               ),

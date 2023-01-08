@@ -29,7 +29,7 @@ Padding infoProduct(double width, BestSeller e, HomeBloc block) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CachedNetworkImage(
+        CachedNetworkImage(errorWidget:(context, url, error) => Text(error.toString()),
           progressIndicatorBuilder: ((context, url, progress) => Center(
               child: SizedBox(
                   height: 30,
