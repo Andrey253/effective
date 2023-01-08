@@ -38,7 +38,7 @@ class SearchCity extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     return ListView(children: [
-      ...listCity.where((element) => element.contains(query)).map(
+      ...listCity.where((element) => element.toLowerCase().contains(query.toLowerCase())).map(
           (e) => TextButton(onPressed: () => close(context, e), child: Text(e)))
     ]);
   }

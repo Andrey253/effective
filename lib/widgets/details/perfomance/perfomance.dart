@@ -42,7 +42,7 @@ class Perfomance extends StatelessWidget {
                       SizedBox(height: width * 0.07),
                       selectColorText(width),
                       perfomanceItems(width, block),
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                       addToCartButton(width, block),
                       SizedBox(height: width * 0.08)
                     ],
@@ -81,8 +81,7 @@ class Perfomance extends StatelessWidget {
 
   Padding perfomanceItems(double width, DetailsBloc block) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-          vertical: width * 0.02, horizontal: width * 0.09),
+      padding: EdgeInsets.symmetric(vertical: width * 0.02, horizontal: width * 0.09),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -90,9 +89,7 @@ class Perfomance extends StatelessWidget {
                 onTap: () => block.setColor(e),
                 child: CircleAvatar(
                   backgroundColor: colorFromHex(e),
-                  child: e == block.repository.product.color
-                      ? const Icon(Icons.done)
-                      : null,
+                  child: e == block.repository.product.color ? const Icon(Icons.done) : null,
                 ),
               )),
           SizedBox(width: width * 0.08),
@@ -100,12 +97,11 @@ class Perfomance extends StatelessWidget {
               width: width * 0.17,
               height: width * 0.07,
               circular: width * 0.022,
-              backgroundColor: e == block.repository.product.capacity
-                  ? ColorsConst.red
-                  : Colors.white,
+              backgroundColor:
+                  e == block.repository.product.capacity ? ColorsConst.red : Colors.white,
               onPressed: (() => block.setCapacity(e)),
               child: TextWS(
-                  text: e,
+                  text: '$e GB',
                   width: width,
                   size: 13,
                   fontWeight: FontWeight.w700,

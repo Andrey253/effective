@@ -19,7 +19,7 @@ class CategoryesWidget extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
 
     return SizedBox(
-        height: width * 0.28,
+        height: width * 0.3,
         child: Padding(
             padding: EdgeInsets.symmetric(horizontal: width * 0.03),
             child: BlocBuilder<HomeBloc, HomeState>(
@@ -44,7 +44,7 @@ class CategoryesWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () => block.selectCategory(e),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: width * 0.03, horizontal: width * 0.02),
+        padding: EdgeInsets.symmetric(vertical: width * 0.04, horizontal: width * 0.02),
         child: Container(
             height: width * 0.18,
             width: width * 0.18,

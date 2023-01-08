@@ -9,20 +9,18 @@ class SelectCategoryLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: Row(
         children: const [
           Text(
             'Select category',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700,color: ColorsConst.textColor),
+            style:
+                TextStyle(fontSize: 25, fontWeight: FontWeight.w700, color: ColorsConst.textColor),
           ),
           Spacer(),
           Text(
             'view all',
-            style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w400,
-                color: ColorsConst.red),
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400, color: ColorsConst.red),
           )
         ],
       ),
