@@ -42,6 +42,7 @@ class Perfomance extends StatelessWidget {
                       SizedBox(height: width * 0.07),
                       selectColorText(width),
                       perfomanceItems(width, block),
+                      SizedBox(height: 30),
                       addToCartButton(width, block),
                       SizedBox(height: width * 0.08)
                     ],

@@ -15,7 +15,7 @@ class BestSellerLine extends StatelessWidget {
         builder: (context, state) => state is FilterState
             ? const SizedBox.shrink()
             : Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
+                padding: const EdgeInsets.only(left: 15, right: 15, top: 20),
                 child: Row(
                   children: const [
                     Text(

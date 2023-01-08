@@ -36,12 +36,10 @@ class CategoryesWidget extends StatelessWidget {
   SizedBox nameCategory(double width, Category e) {
     return SizedBox(
       height: width * 0.04,
-      child: Text(
-        e.name,
-        style: TextStyle(
-            color: e.selected ? ColorsConst.red : ColorsConst.textColor,
-            fontSize: 15),
-      ),
+      child: Text(e.name,
+          style: TextStyle(
+              color: e.selected ? ColorsConst.red : ColorsConst.textColor,
+              fontSize: 15)),
     );
   }
 
@@ -63,7 +61,7 @@ class CategoryesWidget extends StatelessWidget {
             child: Center(
               child: SvgIcon(
                   color: e.selected ? Colors.white : ColorsConst.grey,
-                  size: 30,
+                  size: width * 0.06,
                   icon: SvgIconData(e.asset)),
             )),
       ),

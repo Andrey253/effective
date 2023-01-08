@@ -7,12 +7,15 @@ class HotSalesLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
       child: Row(
         children: const [
           Text(
             'Hot sales',
-            style: TextStyle(fontSize: 25, fontWeight: FontWeight.w700,color: ColorsConst.textColor),
+            style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w700,
+                color: ColorsConst.textColor),
           ),
           Spacer(),
           Text(
