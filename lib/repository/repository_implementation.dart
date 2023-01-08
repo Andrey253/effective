@@ -17,17 +17,15 @@ class RepositoryImplementation extends Repository {
 
   @override
   Future<void> setListCity() async {
-    await Future.delayed(const Duration(milliseconds: 3000));
+    await Future.delayed(const Duration(milliseconds: 1500));
     listCity = startListSity;
-    if (listCity.isNotEmpty) {
-      city = listCity.first;
-    }
+    if (listCity.isEmpty) return;
+    city = listCity.first;
   }
 
   @override
   Future<String> selectCity(BuildContext context) async {
-    city = await showSearch(
-        context: context, delegate: SearchCity(listCity: listCity));
+    city = await showSearch(context: context, delegate: SearchCity(listCity: listCity));
     return city;
   }
 
@@ -54,16 +52,14 @@ class RepositoryImplementation extends Repository {
 
   @override
   Future<Store> getStore() async {
-    final query = await Dio()
-        .get(urlStore, options: Options(responseType: ResponseType.json));
+    final query = await Dio().get(urlStore, options: Options(responseType: ResponseType.json));
     store = Store.fromJson(query.data);
     return store;
   }
 
   @override
   Future<void> getDetails() async {
-    final request = await Dio()
-        .get(urlDetails, options: Options(responseType: ResponseType.json));
+    final request = await Dio().get(urlDetails, options: Options(responseType: ResponseType.json));
     final getingDetails = Details.fromJson(request.data);
     details = getingDetails;
     product = details.getProduct;
@@ -72,8 +68,7 @@ class RepositoryImplementation extends Repository {
 
   @override
   Future<void> getCart() async {
-    final request = await Dio()
-        .get(urlCart, options: Options(responseType: ResponseType.json));
+    final request = await Dio().get(urlCart, options: Options(responseType: ResponseType.json));
     final getingCart = CartModel.fromJson(request.data);
     cart = getingCart;
   }
@@ -81,8 +76,7 @@ class RepositoryImplementation extends Repository {
   @override
   String get weightCart => cart?.basket != null
       ? cart!.basket!
-          .fold(0,
-              (previousValue, element) => previousValue + (element!.quantity))
+          .fold(0, (previousValue, element) => previousValue + (element!.quantity))
           .toString()
       : '0';
 
@@ -90,9 +84,7 @@ class RepositoryImplementation extends Repository {
   String get total {
     final total = (cart?.basket != null
             ? cart!.basket!.fold(
-                0,
-                (previousValue, element) =>
-                    previousValue + (element!.price * element.quantity))
+                0, (previousValue, element) => previousValue + (element!.price * element.quantity))
             : 0)
         .toString();
     if (total.length > 3) {

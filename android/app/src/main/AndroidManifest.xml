@@ -4,7 +4,8 @@
    <application
         android:label="effective"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:background="@mipmap/background">
         <activity
             android:name=".MainActivity"
             android:exported="true"

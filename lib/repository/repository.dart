@@ -9,14 +9,8 @@ import 'package:effective/model/store/store.dart';
 import 'package:flutter/material.dart';
 
 abstract class Repository {
-
-  FilterParams filterParams = FilterParams(
-      listBrands: [],
-      listPrices: [],
-      listSizes: [],
-      brand: '',
-      price: '',
-      size: '');
+  FilterParams filterParams =
+      FilterParams(listBrands: [], listPrices: [], listSizes: [], brand: '', price: '', size: '');
 
   List<Category> listCategory = [];
 
@@ -56,8 +50,8 @@ abstract class Repository {
   Store store = Store(homeStore: [], bestSeller: []);
 
   void selectCategory(Category category) {
-    listCategory = List.from(listCategory.map((e) => Category(
-        name: e.name, asset: e.asset, selected: category.name == e.name)));
+    listCategory = List.from(listCategory
+        .map((e) => Category(name: e.name, asset: e.asset, selected: category.name == e.name)));
   }
 
   void setBrend(String? value) {
@@ -74,18 +68,14 @@ abstract class Repository {
 
   void decrement(int index) {
     final deletedProduct = cart?.basket?.removeAt(index);
-    if (deletedProduct?.quantity == 1) {
-      return;
-    }
-    final basket =
-        deletedProduct?.copyWith(quantity: deletedProduct.quantity - 1);
+    if (deletedProduct?.quantity == 1) return;
+    final basket = deletedProduct?.copyWith(quantity: deletedProduct.quantity - 1);
     cart?.basket?.insert(index, basket);
   }
 
   void increment(int index) {
     final deletedProduct = cart?.basket?.removeAt(index);
-    final product =
-        deletedProduct?.copyWith(quantity: deletedProduct.quantity + 1);
+    final product = deletedProduct?.copyWith(quantity: deletedProduct.quantity + 1);
     cart?.basket?.insert(index, product);
   }
 

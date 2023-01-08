@@ -41,9 +41,7 @@ class HomeBloc extends AppBlock<HomeState> {
   }
 
   void openFilter() {
-    emit(state is FilterState
-        ? const CancelFilterState()
-        : FilterState(repository.filterParams));
+    emit(state is FilterState ? const CancelFilterState() : FilterState(repository.filterParams));
   }
 
   void cancelFilter() {
@@ -69,16 +67,14 @@ class HomeBloc extends AppBlock<HomeState> {
 
   void setPrice(String? value) {
     repository.setPrice(value);
-    if (value != null) {
-      emit(FilterState(repository.filterParams));
-    }
+    if (value == null) return;
+    emit(FilterState(repository.filterParams));
   }
 
   void setSize(String? value) {
     repository.setSize(value);
-    if (value != null) {
-      emit(FilterState(repository.filterParams));
-    }
+    if (value == null) return;
+    emit(FilterState(repository.filterParams));
   }
 
   void getStore() async {
@@ -86,8 +82,7 @@ class HomeBloc extends AppBlock<HomeState> {
     emit(UpdateStoreState(store: store));
   }
 
-  void navigateToDetails(
-      BuildContext context, String url, Repository repository) async {
+  void navigateToDetails(BuildContext context, String url, Repository repository) async {
     await Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => DetailsHome(
         repository: repository,
@@ -99,6 +94,5 @@ class HomeBloc extends AppBlock<HomeState> {
 
   String discounPr(BestSeller e) => '\$ ${e.discountPrice.toString()}';
 
-  String priceWitghoutDisc(BestSeller e) =>
-      '\$ ${e.priceWithoutDiscount.toString()}';
+  String priceWitghoutDisc(BestSeller e) => '\$ ${e.priceWithoutDiscount.toString()}';
 }
