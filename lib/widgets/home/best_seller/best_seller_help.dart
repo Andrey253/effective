@@ -13,9 +13,7 @@ Container favorit(double width, BestSeller e) {
           height: width * 0.07,
           width: width * 0.07,
           decoration: const BoxDecoration(
-            boxShadow: [
-              BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 2)
-            ],
+            boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 2)],
             shape: BoxShape.circle,
             color: Colors.white,
           ),
@@ -32,6 +30,11 @@ Padding infoProduct(double width, BestSeller e, HomeBloc block) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CachedNetworkImage(
+          progressIndicatorBuilder: ((context, url, progress) => Center(
+              child: SizedBox(
+                  height: 30,
+                  width: 30,
+                  child: CircularProgressIndicator(value: progress.progress)))),
           imageUrl: e.picture,
           height: width / 2.5,
         ),
@@ -41,8 +44,7 @@ Padding infoProduct(double width, BestSeller e, HomeBloc block) {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(block.priceWitghoutDisc(e),
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700, fontSize: width * 0.032)),
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: width * 0.032)),
               SizedBox(width: width * 0.02),
               Text(block.discounPr(e),
                   style: TextStyle(
@@ -58,10 +60,8 @@ Padding infoProduct(double width, BestSeller e, HomeBloc block) {
           padding: EdgeInsets.symmetric(horizontal: width * 0.036),
           child: Text(
             e.title,
-            style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w400,
-                fontSize: width * 0.02),
+            style:
+                TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: width * 0.02),
           ),
         )
       ],
@@ -75,9 +75,7 @@ Padding itemBestSeller(double width, BestSeller e, HomeBloc block) {
     child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(width * 0.02)),
-          boxShadow: const [
-            BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 2)
-          ],
+          boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 2)],
           color: Colors.white,
         ),
         child: Stack(
