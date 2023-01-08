@@ -29,7 +29,8 @@ Padding infoProduct(double width, BestSeller e, HomeBloc block) {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CachedNetworkImage(errorWidget:(context, url, error) => Text(error.toString()),
+        CachedNetworkImage(
+          errorWidget: (context, url, error) => Text(error.toString()),
           progressIndicatorBuilder: ((context, url, progress) => Center(
               child: SizedBox(
                   height: 30,
@@ -43,10 +44,10 @@ Padding infoProduct(double width, BestSeller e, HomeBloc block) {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(block.priceWitghoutDisc(e),
+              Text(block.insertCharToPriceInt(e.priceWithoutDiscount),
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: width * 0.032)),
               SizedBox(width: width * 0.02),
-              Text(block.discounPr(e),
+              Text(block.insertCharToPriceInt(e.discountPrice),
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w500,

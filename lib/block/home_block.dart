@@ -92,7 +92,13 @@ class HomeBloc extends AppBlock<HomeState> {
     // emit(GetingDetails(url: url));
   }
 
-  String discounPr(BestSeller e) => '\$ ${e.discountPrice.toString()}';
-
-  String priceWitghoutDisc(BestSeller e) => '\$ ${e.priceWithoutDiscount.toString()}';
+  String insertCharToPriceInt(int int) {
+    final price = int.toString();
+    if (price.length > 3) {
+      final subString = price.substring(price.length - 3, price.length);
+      final d = '\$ ${price.replaceAll(subString, ',$subString')}';
+      return d;
+    }
+    return '\$ $int';
+  }
 }
