@@ -8,9 +8,12 @@ class Loading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return BlocBuilder<DetailsBloc, DetailsState>(
-      builder: (context, state) =>state is GetingDetailsState?
-          const Center(child: Text('Downloads..')): const SizedBox.shrink(),
+      builder: (context, state) => state is GetingDetailsState
+          ? SizedBox(
+              height: size.height * 0.9, child: const Center(child: CircularProgressIndicator()))
+          : const SizedBox.shrink(),
     );
   }
 }

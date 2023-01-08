@@ -19,19 +19,21 @@ class CartWidget extends StatelessWidget {
     return BlocProvider<CartBlock>(
         create: (_) =>
             CartBlock(type: const InitCartState(), repository: repository),
-        child: Scaffold(
-            appBar: AppBar(
-              title: const TopCart(),
-              shadowColor: Colors.transparent,
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.transparent,
-            ),
-            backgroundColor: ColorsConst.backGround,
-            body:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              textMyCart(width),
-              const BoxCart(),
-            ])));
+        child: SafeArea(
+          child: Scaffold(
+              appBar: AppBar(
+                title: const TopCart(),
+                shadowColor: Colors.transparent,
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.transparent,
+              ),
+              backgroundColor: ColorsConst.backGround,
+              body:
+                  Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                textMyCart(width),
+                const BoxCart(),
+              ])),
+        ));
   }
 
   Padding textMyCart(double width) {

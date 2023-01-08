@@ -26,10 +26,8 @@ class CategoryesWidget extends StatelessWidget {
                 builder: (context, state) => ListView(
                     scrollDirection: Axis.horizontal,
                     children: block.repository.listCategory
-                        .map((e) => Column(children: [
-                              itemCategory(block, e, width),
-                              nameCategory(width, e)
-                            ]))
+                        .map((e) => Column(
+                            children: [itemCategory(block, e, width), nameCategory(width, e)]))
                         .toList()))));
   }
 
@@ -37,9 +35,8 @@ class CategoryesWidget extends StatelessWidget {
     return SizedBox(
       height: width * 0.04,
       child: Text(e.name,
-          style: TextStyle(
-              color: e.selected ? ColorsConst.red : ColorsConst.textColor,
-              fontSize: 15)),
+          style:
+              TextStyle(color: e.selected ? ColorsConst.red : ColorsConst.textColor, fontSize: 15)),
     );
   }
 
@@ -47,14 +44,12 @@ class CategoryesWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () => block.selectCategory(e),
       child: Padding(
-        padding: EdgeInsets.all(width * 0.02),
+        padding: EdgeInsets.symmetric(vertical: width * 0.03, horizontal: width * 0.02),
         child: Container(
             height: width * 0.18,
             width: width * 0.18,
             decoration: BoxDecoration(
-              boxShadow: const [
-                BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 2)
-              ],
+              boxShadow: const [BoxShadow(color: Colors.grey, blurRadius: 10, spreadRadius: 2)],
               shape: BoxShape.circle,
               color: e.selected ? ColorsConst.red : Colors.white,
             ),
