@@ -66,6 +66,16 @@ class Details extends Equatable {
       ssd: ssd,
       title: title);
 
+  get priceProduct  {
+        final p = price.toStringAsFixed(2);
+    if (p.length > 6) {
+      final subString = p.substring(p.length - 6, p.length);
+      final d = '\$ ${p.replaceAll(subString, ',$subString')}';
+      return d;
+    }
+    return '\$ $p';
+  }
+
   Map<String, dynamic> toJson() => {
         "CPU": cpu,
         "camera": camera,

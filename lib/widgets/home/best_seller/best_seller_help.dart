@@ -44,10 +44,10 @@ Padding infoProduct(double width, BestSeller e, HomeBloc block) {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(block.insertCharToPriceInt(e.priceWithoutDiscount),
+              Text(e.insertCharWithDiscount,
                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: width * 0.032)),
               SizedBox(width: width * 0.02),
-              Text(block.insertCharToPriceInt(e.discountPrice),
+              Text(e.insertCharWithoutDiscount,
                   style: TextStyle(
                       color: Colors.grey,
                       fontWeight: FontWeight.w500,

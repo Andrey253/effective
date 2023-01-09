@@ -14,15 +14,7 @@ class DetailsBloc extends AppBlock<DetailsState> {
     init();
   }
 
-  get priceProduct {
-        final price = repository.details.price.toStringAsFixed(2);
-    if (price.length > 6) {
-      final subString = price.substring(price.length - 6, price.length);
-      final d = '\$ ${price.replaceAll(subString, ',$subString')}';
-      return d;
-    }
-    return '\$ $price';
-  }
+
 
   void init() async {
     try {

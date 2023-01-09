@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:effective/block/block.dart';
-import 'package:effective/model/store/best_seller.dart';
 import 'package:flutter/material.dart';
 import 'package:effective/block/home_state.dart';
 import 'package:effective/model/category.dart';
@@ -92,13 +91,5 @@ class HomeBloc extends AppBlock<HomeState> {
     // emit(GetingDetails(url: url));
   }
 
-  String insertCharToPriceInt(int int) {
-    final price = int.toString();
-    if (price.length > 3) {
-      final subString = price.substring(price.length - 3, price.length);
-      final d = '\$ ${price.replaceAll(subString, ',$subString')}';
-      return d;
-    }
-    return '\$ $int';
-  }
+
 }
